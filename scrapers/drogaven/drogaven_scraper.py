@@ -116,7 +116,6 @@ def parse_product_page(html_content, url):
     except (json.JSONDecodeError, AttributeError):
         pass
                 
-    # Extrai a tag para o EAN
     # Extrai a tag para o EAN (Improved Logic)
     # 1. Check all JSON-LD blocks
     json_ld_tags = soup.find_all('script', type='application/ld+json')
@@ -129,34 +128,12 @@ def parse_product_page(html_content, url):
         except (json.JSONDecodeError, TypeError):
             continue
 
-    try:
-        # 1. Find the specific JSON-LD script that contains the "Product" type
-        json_ld_tag = soup.find('script', type='application/ld+json')
-        
-        if json_ld_tag:
-            # 2. Load the string as a Python dictionary
-            data = json.loads(json_ld_tag.string)
-            
-            # 3. Extract the gtin13 (EAN) value
-            product_data["ean"] = data.get('gtin13')
-            
-    except (json.JSONDecodeError, AttributeError, TypeError):
-        # Gracefully skip if JSON is malformed or the tag is missing
-        pass
     # 2. Fallback to Meta Tag if still missing
     if not product_data["ean"]:
         meta_ean = soup.select_one(EAN_SELECTOR)
         if meta_ean:
             product_data["ean"] = meta_ean.get('content')
 
-    # try:
-    #     ean_description_tag = soup.select_one(EAN_SELECTOR)
-    #     product_data["ean"] = ean_description_tag.get('content')
-    # except (json.JSONDecodeError, AttributeError):
-    #     pass
-        
-
-    # Junta os dados
     if (product_data["ean"] or product_data["name"]) and (product_data["price"] is None or product_data["price"] == ""):
         logger.debug(f"Product excluded (missing price): {url}")
         return None
