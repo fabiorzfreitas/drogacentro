@@ -7,9 +7,22 @@ import os
 import pandas as pd
 from datetime import datetime
 from tqdm import tqdm
+import logging
 
 # --- Módulos necessários ---
 # python -m pip install requests lxml fake_useragent beautifulsoup4 tqdm pandas openpyxl
+
+# --- Logging Setup ---
+log_filename = f"drogal_scraper_{datetime.now().strftime('%Y%m%d')}.log"
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler(log_filename, encoding='utf-8'),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
 
 # --- Configuração ---
 ROOT_SITEMAP_URL = "https://www.drogal.com.br/sitemap.xml"
@@ -38,11 +51,11 @@ HEADERS = {
     'Upgrade-Insecure-Requests': '1'
 }
 
-print('\n --- Drogal Scraper ---\n')
+logger.info('--- Drogal Scraper Starting ---')
 
 # Checar a variável de teste
 if TEST_RUN:
-    print(f'Iniciando teste com {SAMPLE_SIZE} URLs\n')
+    logger.info(f'Iniciando teste com {SAMPLE_SIZE} URLs')
 
 # --- Funções acessórias ---
 
@@ -55,6 +68,7 @@ def fetch_url(url):
         response.raise_for_status()
         return response.text
     except requests.exceptions.RequestException:
+        logger.error(f"Failed to fetch URL: {url}")
         return None
 
 
@@ -62,10 +76,10 @@ def get_product_sitemap_urls(root_sitemap_url):
     """
     Lê o sitemap base e extrai as URLs dos sitemaps de produtos
     """
-    print(f"Extraindo sitemap base: {root_sitemap_url}")
+    logger.info(f"Extraindo sitemap base: {root_sitemap_url}")
     xml_content = fetch_url(root_sitemap_url)
     if not xml_content:
-        print("Não foi possível baixar o sitemap base.")
+        logger.error("Não foi possível baixar o sitemap base.")
         return []
 
     soup = BeautifulSoup(xml_content, 'xml')
@@ -85,7 +99,7 @@ def extract_product_urls_from_sitemap(sitemap_url):
     Extrai as URLs de produtos de um sitemap XML
     Os sitemaps devem ter a tahg <loc> nas URLs
     """
-    print(f"Baixando sitemap: {sitemap_url}")
+    logger.info(f"Baixando sitemap: {sitemap_url}")
     xml_content = fetch_url(sitemap_url)
     if not xml_content:
         return []
@@ -171,7 +185,7 @@ def save_data_to_files(data, output_dir="output"):
 
     with open(json_filepath, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
-    print(f"\nDados salvos em: {json_filepath}")
+    logger.info(f"Dados salvos em JSON: {json_filepath}")
 
     if data:
         df = pd.DataFrame(data)
@@ -186,12 +200,12 @@ def save_data_to_files(data, output_dir="output"):
         df = df[["EAN", "Produto", "Preço (R$)", "Link"]]
 
         df.to_csv(csv_filepath, sep=';', index=False)
-        print(f"Dados salvos em: {csv_filepath}.")
+        logger.info(f"Dados salvos em CSV: {csv_filepath}.")
 
         df.to_excel(xlsx_filepath, index=False)
-        print(f"Dados salvos em: {xlsx_filepath}.")
+        logger.info(f"Dados salvos em Excel: {xlsx_filepath}.")
     else:
-        print("Nenhum dado para salvar.")
+        logger.warning("Nenhum dado para salvar.")
 
 
 def main():
@@ -200,7 +214,7 @@ def main():
     # 1: Extrair todas as URLs de sitemap
     product_sitemap_urls = get_product_sitemap_urls(ROOT_SITEMAP_URL)
     if not product_sitemap_urls:
-        print("Nenhum sitemap de produto encontrado. Encerrando...")
+        logger.error("Nenhum sitemap de produto encontrado. Encerrando...")
         return
     
     # 2: Extrair todas as URLs de produtos
@@ -211,7 +225,7 @@ def main():
 
     # Remover duplicados
     unique_product_urls = list(set(all_product_urls))
-    print(f"\nEncontradas {len(unique_product_urls)} URLs de produtos.")
+    logger.info(f"Encontradas {len(unique_product_urls)} URLs de produtos.")
 
     scraped_products = []
     no_ean = []
@@ -220,13 +234,13 @@ def main():
     # Iniciar teste ou scraping
     if TEST_RUN:
         urls_to_scrape = unique_product_urls[:SAMPLE_SIZE]
-        print(f"Extraindo {len(urls_to_scrape)} URLs de produtos para teste...")
+        logger.info(f"Extraindo {len(urls_to_scrape)} URLs de produtos para teste...")
         with open(f'{OUTPUT_DIR}/drogal_sample_urls.txt', 'w+', encoding='utf-8') as f:
             for url in urls_to_scrape:
                 f.write(url + '\n')
     else:
         urls_to_scrape = unique_product_urls
-        print(f"Extraindo {len(urls_to_scrape)} URLs de produtos...")
+        logger.info(f"Extraindo {len(urls_to_scrape)} URLs de produtos...")
 
     # Usar workers para scraping em paralelo
     with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
@@ -244,9 +258,11 @@ def main():
 
     end_time = time.perf_counter()
     total_time = end_time - start_time
-    print(f"\nTempo total: {total_time:.2f} segundos.")
-    print(f"Total de produtos com sucesso: {len(scraped_products)}.")
-    print(f"Total de produtos com falha: {total_failed_products}.")
+    logger.info(f"--- Drogal Finish ---")
+    logger.info(f"Tempo total: {total_time:.2f} segundos")
+    logger.info(f"Total de produtos com sucesso: {len(scraped_products)}")
+    logger.info(f"Total de produtos sem EAN: {len(no_ean)}")
+    logger.info(f"Total de produtos com falha: {total_failed_products}")
 
 if __name__ == "__main__":
     main()

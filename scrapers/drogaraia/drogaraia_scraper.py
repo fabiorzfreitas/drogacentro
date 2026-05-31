@@ -9,9 +9,22 @@ import pandas as pd
 from fake_useragent import UserAgent
 from datetime import datetime
 from tqdm import tqdm
+import logging
 
 # --- Required modules ---
 # python -m pip install requests lxml fake_useragent beautifulsoup4 tqdm pandas openpyxl
+
+# --- Logging Setup ---
+log_filename = f"drogaraia_scraper_{datetime.now().strftime('%Y%m%d')}.log"
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler(log_filename, encoding='utf-8'),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
 
 # --- Configuration ---
 SITEMAP_URL = "https://www.drogaraia.com.br/sitemap/2/sitemap.xml"
@@ -50,9 +63,9 @@ bad_uas = set()
 
 
 # Iniciar e checar a variável de teste
-print('\n --- DrogaRaia Scraper ---\n')
+logger.info('--- DrogaRaia Scraper Starting ---')
 if TEST_RUN:
-    print(f'Iniciando teste com {SAMPLE_SIZE} URLs\n')
+    logger.info(f'Iniciando teste com {SAMPLE_SIZE} URLs')
 
 
 # --- Funções acessórias ---
@@ -71,13 +84,13 @@ def url_attempt(url, max_retries):
             headers = BASE_HEADERS.copy()
             headers['User-Agent'] = current_ua_string
 
-            print(f"Attempt {attempt + 1} of {max_retries}: Fetching {url} with User-Agent: {headers['User-Agent']}")
+            logger.debug(f"Attempt {attempt + 1} of {max_retries}: Fetching {url}")
             response = requests.get(url, headers=headers, timeout=10)
             
             # This will raise an exception for 4xx or 5xx status codes
             response.raise_for_status()
             
-            print(f"✅ Success with: {current_ua_string}")
+            logger.debug(f"✅ Success with: {current_ua_string}")
             return response.text
         
         except requests.exceptions.RequestException as e:
@@ -85,10 +98,10 @@ def url_attempt(url, max_retries):
             if e.response is not None:
                 last_status_code = e.response.status_code
             
-            print(f"Request failed: {e}")
-            print(f"❌ Failed with User-Agent: {current_ua_string}")
+            logger.warning(f"Request failed for {url}: {e}")
+            logger.debug(f"❌ Failed with User-Agent: {current_ua_string}")
             bad_uas.add(current_ua_string)
-            print(f"Adding to blacklist. Current bad UAs: {len(bad_uas)}")
+            logger.debug(f"Adding to blacklist. Current bad UAs: {len(bad_uas)}")
             
             # Check for a 403 specifically, but only after all retries have been exhausted
             if attempt == max_retries - 1 and last_status_code == 403:
@@ -97,7 +110,7 @@ def url_attempt(url, max_retries):
             
             # End of the failed attempt
             sleep_time = random.uniform(2, 5)
-            print(f"Retrying in {sleep_time:.2f} seconds...")
+            logger.debug(f"Retrying in {sleep_time:.2f} seconds...")
             time.sleep(sleep_time)
 
 
@@ -127,7 +140,7 @@ def fetch_url(url, max_retries=MAX_RETRIES, max_403_attempts=MAX_403_CODES):
         # After the inner loop, check if the last failure was a 403
         if last_response == 403 and current_sleep_time < 3600:
             consecutive_403_count += 1
-            print(f"⚠️ All retries failed with 403. Pausing for {current_sleep_time} seconds before trying again...")
+            logger.warning(f"⚠️ 403 Forbidden on {url}. Pausing for {current_sleep_time}s...")
             time.sleep(current_sleep_time)
             
             # Exponentially increase the sleep time, capping at 1 hour
@@ -136,11 +149,11 @@ def fetch_url(url, max_retries=MAX_RETRIES, max_403_attempts=MAX_403_CODES):
         else:
             # If the last error was NOT a 403, something else is wrong.
             # Stop trying on this URL and move on.
-            print(f"Final status was {last_response}. Abandoning URL.")
+            logger.error(f"Abandoning URL {url}. Final status: {last_response}")
             return None
     
     # If the max 403 attempts were exhausted, give up on this URL.
-    print(f"Maximum 403 attempts ({max_403_attempts}) exceeded. Abandoning URL.")
+    logger.error(f"Max 403 attempts reached for {url}.")
     return None
     
 
@@ -149,7 +162,7 @@ def extract_product_urls_from_sitemap(sitemap_url):
     Extrai as URLs de produtos de um sitemap XML
     O sitemap deve ter a tag <loc> nas URLs
     """
-    print(f"Baixando sitemap: {sitemap_url}")
+    logger.info(f"Baixando sitemap: {sitemap_url}")
     xml_content = fetch_url(sitemap_url)
     if not xml_content:
         return []
@@ -242,7 +255,7 @@ def save_data_to_files(data, output_dir="output"):
 
     with open(json_filepath, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
-    print(f"\nDados salvos em: {json_filepath}")
+    logger.info(f"Dados salvos em JSON: {json_filepath}")
 
     if data:
         df = pd.DataFrame(data)
@@ -257,12 +270,12 @@ def save_data_to_files(data, output_dir="output"):
         df = df[["EAN", "Produto", "Preço (R$)", "Link"]]
 
         df.to_csv(csv_filepath, sep=';', index=False)
-        print(f"Dados salvos em: {csv_filepath}.")
+        logger.info(f"Dados salvos em CSV: {csv_filepath}.")
 
         df.to_excel(xlsx_filepath, index=False)
-        print(f"Dados salvos em: {xlsx_filepath}.")
+        logger.info(f"Dados salvos em Excel: {xlsx_filepath}.")
     else:
-        print("Nenhum dado para salvar.")
+        logger.warning("Nenhum dado para salvar.")
 
 
 def main():
@@ -273,7 +286,7 @@ def main():
 
     # Remover duplicados
     unique_product_urls = list(set(urls_from_sitemap))
-    print(f"\nEncontradas {len(unique_product_urls)} URLs de produtos.")
+    logger.info(f"Encontradas {len(unique_product_urls)} URLs de produtos.")
 
     scraped_products = []
     no_ean = []
@@ -282,10 +295,10 @@ def main():
     # Iniciar teste ou scraping
     if TEST_RUN:
         urls_to_scrape = unique_product_urls[:SAMPLE_SIZE]
-        print(f"Extraindo {len(urls_to_scrape)} URLs de produtos para teste...")
+        logger.info(f"Extraindo {len(urls_to_scrape)} URLs de produtos para teste...")
     else:
         urls_to_scrape = unique_product_urls
-        print(f"Extraindo {len(urls_to_scrape)} URLs de produtos...")
+        logger.info(f"Extraindo {len(urls_to_scrape)} URLs de produtos...")
 
     # Usar workers para scraping em paralelo
     with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
@@ -303,16 +316,13 @@ def main():
 
     end_time = time.perf_counter()
     total_time = end_time - start_time
-    print(f"""
-          DrogaRaia:
-    Tempo total: {total_time:.2f} segundos
-    Total de produtos com sucesso: {len(scraped_products)}
-    Total de produtos sem EAN: {len(no_ean)}
-    Total de produtos com falha: {total_failed_products}
-    """)
+    logger.info(f"--- DrogaRaia Finish ---")
+    logger.info(f"Tempo total: {total_time:.2f} segundos")
+    logger.info(f"Total de produtos com sucesso: {len(scraped_products)}")
+    logger.info(f"Total de produtos sem EAN: {len(no_ean)}")
+    logger.info(f"Total de produtos com falha: {total_failed_products}")
 
-    print(f"\nFinal count of blacklisted UAs: {len(bad_uas)}")
-    print("This blacklist can be used for the entire script run.")
+    logger.info(f"Final count of blacklisted UAs: {len(bad_uas)}")
 
 
 if __name__ == "__main__":
