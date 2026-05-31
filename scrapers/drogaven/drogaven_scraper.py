@@ -149,15 +149,16 @@ def scrape_single_product(url):
 
 def save_data_to_files(data, output_dir="output"):
     """
-    Salva os dados em JSON, CSV e XLSX, com a data no nome
+    Saves data to project-level output folder
     """
-    os.makedirs(output_dir, exist_ok=True)
+    # Go up two levels to reach the project root 'output'
+    base_output = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', output_dir))
+    os.makedirs(base_output, exist_ok=True)
     date_str = datetime.now().strftime("%Y-%m-%d")
-    script_dir = os.path.dirname(__file__)
 
-    json_filepath = os.path.abspath(os.path.join(script_dir, '..', '..', output_dir, f"Scrape_Drogaven_{date_str}.json"))
-    csv_filepath = os.path.abspath(os.path.join(script_dir, '..', '..', output_dir, f"Scrape_Drogaven_{date_str}.csv"))
-    xlsx_filepath = os.path.abspath(os.path.join(script_dir, '..', '..', output_dir, f"Scrape_Drogaven_{date_str}.xlsx"))
+    json_filepath = os.path.join(base_output, f"Scrape_Drogaven_{date_str}.json")
+    csv_filepath = os.path.join(base_output, f"Scrape_Drogaven_{date_str}.csv")
+    xlsx_filepath = os.path.join(base_output, f"Scrape_Drogaven_{date_str}.xlsx")
 
     with open(json_filepath, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
@@ -236,4 +237,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

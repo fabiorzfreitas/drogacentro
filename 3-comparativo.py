@@ -1,3 +1,7 @@
+"""
+Internal vs. Competitor Comparison Report
+Generates a report comparing the best competitor price against our internal system prices.
+"""
 import json
 import os
 import time
@@ -5,12 +9,15 @@ import pandas as pd
 from datetime import datetime
 import warnings
 
-# Directories
-INPUT_DIR = 'input'
-OUTPUT_DIR = 'output'
+# --- Configuration ---
+SCRAPE_DATE = '2025-08-15'
+
+INPUT_DIR = 'input'   # Internal spreadsheet lives here
+DATA_DIR = 'output'   # Consolidated competitor data lives here
+REPORT_DIR = 'output' # Final report goes here
 
 # External catalog containing compared prices.
-OUTSIDE_CATALOG = 'Scrape_concorrentes_2025-08-15.json'
+COMPETITOR_JSON = f'Scrape_concorrentes_{SCRAPE_DATE}.json'
 # Internal spreadsheet containing source data.
 INTERNAL_SHEET = 'Dados_sistema.xlsx'
 
@@ -71,11 +78,17 @@ def save_data_to_files(data, output_dir="output"):
 
 
 def main():
+    print(f"\n--- Generating Comparison Report for Scrape Date: {SCRAPE_DATE} ---")
     start_time = time.perf_counter()
     
     script_dir = os.path.dirname(__file__)
-    catalog_file = os.path.join(script_dir, INPUT_DIR, OUTSIDE_CATALOG)
+    catalog_file = os.path.join(script_dir, DATA_DIR, COMPETITOR_JSON)
     sheet_file = os.path.join(script_dir, INPUT_DIR, INTERNAL_SHEET)
+
+    if not os.path.exists(catalog_file):
+        print(f"❌ Error: Consolidated competitor file not found: {catalog_file}")
+        print("Run '2-concorrentes.py' first.")
+        return
 
     # Import external catalog
     with open(catalog_file, 'r', encoding='utf-8') as f:
@@ -88,29 +101,26 @@ def main():
             message="Workbook contains no default style, apply openpyxl's default",
             category=UserWarning
         )
+        print(f"📊 Reading internal system data: {INTERNAL_SHEET}")
         df = pd.read_excel(sheet_file, usecols='A, B, C, J, Q', dtype=str, engine='openpyxl')
-    # Renames columns
+
+    # Rename columns
     column_names = ['ean', 'category', 'name', 'price', 'class']
     df.columns = column_names
     df = df.astype({'price': float})
+
     # Import as list of dicts and convert to dict of dicts
     internal_as_list = df.to_dict(orient='records')
     internal_as_dict = {product_row['ean']: product_row for product_row in internal_as_list}
 
-    # Compares
+    # Compare and save data to files
     processed_catalog = dict_handler(external_dict, internal_as_dict)
-
-    # Save data to files
-    save_data_to_files(processed_catalog, OUTPUT_DIR)
+    save_data_to_files(processed_catalog, REPORT_DIR)
 
     end_time = time.perf_counter()
     total_time = end_time - start_time
-    print(f"""
-          Comparação:
-    Tempo total: {total_time:.2f} segundos
-        """)
+    print(f"\n[SUCCESS] Comparison report generated in {total_time:.2f} seconds.")
     
 
 if __name__ == "__main__":
     main()
-

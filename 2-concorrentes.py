@@ -1,16 +1,26 @@
+"""
+Competitor Price Consolidator
+Takes raw scraper outputs and finds the lowest price per EAN among competitors.
+"""
 import json
 import os
 import pandas as pd
 from datetime import datetime
 
-# Directories
-INPUT_DIR = 'input'
-OUTPUTE_DIR = 'output'
+# --- Configuration ---
+# Ensure this date matches the date in the scraper output filenames
+SCRAPE_DATE = '2025-08-15' 
 
-# JSON filenames to be used for building the master catalog.
-SOURCE_FILES = 'Scrape_Drogal_2025-08-15.json', 'Scrape_DrogaRaia_2025-08-15.json', 'Scrape_Drogaven_2025-08-15.json'
-# Text file containing EANs.
-TARGET_EANS = 'eans.txt'
+RAW_DATA_DIR = 'output'  # Scrapers output here
+PROCESSED_DIR = 'output' # Consolidated result goes here
+REFERENCE_DIR = 'input'  # EAN filter list lives here
+
+SOURCE_FILES = [
+    f'Scrape_Drogal_{SCRAPE_DATE}.json',
+    f'Scrape_DrogaRaia_{SCRAPE_DATE}.json',
+    f'Scrape_Drogaven_{SCRAPE_DATE}.json'
+]
+TARGET_EANS_FILE = 'eans.txt'
 
 def build_catalog(json_individual_catalog):
     """
@@ -109,7 +119,7 @@ def filter_catalog(master_catalog, target_eans_file):
 
 def compare(*scraped_data):
 
-    ean_path = os.path.join(INPUT_DIR, TARGET_EANS)
+    ean_path = os.path.join(REFERENCE_DIR, TARGET_EANS_FILE)
 
     individual_catalogs = [build_catalog(json_filename) for json_filename in scraped_data]
     compared_catalog = find_lowest_price(individual_catalogs)
@@ -154,22 +164,24 @@ def save_data_to_files(data, output_dir='output'):
 
 
 def main():
-
-    source_file_paths = []
+    print(f"\n--- Consolidating Competitor Data for Date: {SCRAPE_DATE} ---")
 
     # Check for source files existence
+    source_file_paths = []
     for source_file_name in (SOURCE_FILES):
-        source_file = os.path.join(INPUT_DIR, source_file_name)
+        source_file = os.path.join(RAW_DATA_DIR, source_file_name)
         if not os.path.exists(source_file):
-            print(f"Warning: File not found - {source_file}. Stopping.")
+            print(f"❌ Error: Required scraper result file not found: {source_file}")
+            print("Make sure you ran the scrapers first!")
             return
+        print(f"📂 Found source: {source_file_name}")
         source_file_paths.append(source_file)
 
     # Process files and save output
     lowest_catalog = compare(*source_file_paths)
-    save_data_to_files(lowest_catalog)
+    save_data_to_files(lowest_catalog, PROCESSED_DIR)
+    print("\n[SUCCESS] Consolidation complete.")
 
 
 if __name__ == "__main__":
     main()
-
