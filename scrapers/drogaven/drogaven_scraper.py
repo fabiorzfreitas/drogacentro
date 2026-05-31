@@ -67,7 +67,7 @@ def fetch_url(url):
     try:
         response = requests.get(url, headers=HEADERS, timeout=10)
         response.raise_for_status()
-        return response.text
+        return response.content # Return raw bytes for BeautifulSoup to handle encoding
     except requests.exceptions.RequestException:
         logger.error(f"Failed to fetch URL: {url}")
         return None
@@ -94,6 +94,7 @@ def parse_product_page(html_content, url):
     Lê a página do produto e extrai preço, EAN e nome a partir de uma URL
     Retorna um dicionário com as informações do produto ou None se o produto não estiver disponível
     """
+    logger.debug(f"Parsing product page for {url}. Content type: {type(html_content)}")
     soup = BeautifulSoup(html_content, 'html.parser')
     product_data = {"url": url, "price": None, "ean": None, "name": None}
 

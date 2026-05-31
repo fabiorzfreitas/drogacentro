@@ -1,0 +1,76 @@
+2026-05-31 09:13:06,126 - INFO - --- Drogaven Scraper Starting ---
+2026-05-31 09:13:06,126 - INFO - Iniciando teste com 500 URLs
+2026-05-31 09:13:06,126 - INFO - Baixando sitemap: https://io.convertiez.com.br/s/drogaven/sitemap-products-1.xml
+2026-05-31 09:13:09,365 - INFO - Encontradas 21632 URLs de produtos.
+2026-05-31 09:13:09,365 - INFO - Extraindo 500 URLs de produtos para teste...
+2026-05-31 09:13:24,513 - INFO - Dados salvos em JSON: c:\Users\Fabio\Git\drogacentro\output\Scrape_Drogaven_2026-05-31.json
+2026-05-31 09:13:24,514 - WARNING - Nenhum dado para salvar.
+2026-05-31 09:13:24,518 - INFO - --- Drogaven Finish ---
+2026-05-31 09:13:24,518 - INFO - Tempo total: 18.39 segundos
+2026-05-31 09:13:24,518 - INFO - Total de produtos com sucesso: 0
+2026-05-31 09:13:24,518 - INFO - Total de produtos sem EAN: 500
+2026-05-31 09:13:24,518 - INFO - Total de produtos com falha: 0
+2026-05-31 09:14:06,732 - INFO - --- Drogaven Scraper Starting ---
+2026-05-31 09:14:06,732 - INFO - Iniciando teste com 2500 URLs
+2026-05-31 09:14:06,732 - INFO - Baixando sitemap: https://io.convertiez.com.br/s/drogaven/sitemap-products-1.xml
+2026-05-31 09:14:09,878 - INFO - Encontradas 21632 URLs de produtos.
+2026-05-31 09:14:09,879 - INFO - Extraindo 2500 URLs de produtos para teste...
+2026-05-31 09:15:03,517 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/unha-postica-auto-colante-bailarina-azul-sabrina-sato/p
+2026-05-31 09:15:04,097 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/gel-para-limpeza-facial-la-roche-posay-effaclar-alta-tolerancia-300g/p
+2026-05-31 09:15:04,127 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/movatec-15mg-10cpr/p
+2026-05-31 09:26:12,281 - INFO - --- Drogaven Scraper Starting ---
+2026-05-31 09:26:12,281 - INFO - Baixando sitemap: https://io.convertiez.com.br/s/drogaven/sitemap-products-1.xml
+2026-05-31 09:26:15,391 - INFO - Encontradas 21632 URLs de produtos.
+2026-05-31 09:26:15,391 - INFO - Extraindo 21632 URLs de produtos...
+2026-05-31 09:26:55,935 - INFO - --- Drogaven Scraper Starting ---
+2026-05-31 09:26:55,935 - INFO - Iniciando teste com 5000 URLs
+2026-05-31 09:26:55,935 - INFO - Baixando sitemap: https://io.convertiez.com.br/s/drogaven/sitemap-products-1.xml
+2026-05-31 09:26:59,199 - INFO - Encontradas 21632 URLs de produtos.
+2026-05-31 09:26:59,200 - INFO - Extraindo 5000 URLs de produtos para teste...
+2026-05-31 09:27:34,944 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/lip-balm-labial-dalla-uvinha-8g/p
+2026-05-31 09:27:35,133 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/salgadinho-cheetos-lua-parmesao-40g/p
+2026-05-31 09:27:35,456 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/havaianas-aloha-infantil-290-1218929/p
+2026-05-31 09:27:35,612 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/prendedor-para-chupeta-mam-clip-it-cover-0-meses-sortido-com-1-unidade/p
+2026-05-31 09:27:49,437 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/camiseta-elite-termica-infantil-manga-longa-8-royal-125490/p
+2026-05-31 09:27:49,608 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/melocox-odt-15mg-10cpr/p
+2026-05-31 09:27:49,970 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/fralda-vitalidade-baby-m-90un/p
+2026-05-31 09:27:50,184 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/luva-nitrilica-soft-aid-tam-m-azul-sem-po-c100unid/p
+2026-05-31 09:28:00,192 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/zisque-35mg-60-comprimidos/p
+2026-05-31 09:28:00,579 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/cloridrato-ondansetrona-8mg-10cpr-biolab-generico/p
+2026-05-31 09:28:03,347 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/imobilizador-de-joelho-largo-60cm-chantal/p
+2026-05-31 09:28:04,289 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/equipo-multivias-descarpack-com-clamp-1-unidade/p
+2026-05-31 09:28:04,816 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/alfaestradiol-solucao-capilar-025mgml-100ml/p
+2026-05-31 09:28:04,878 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/isdin-oily-skin-acniben-1-sabonete-liquido-208g/p
+2026-05-31 09:28:06,738 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/nesina-pio-25mg-15mg-30-comprimidos-revestidos/p
+2026-05-31 09:28:06,957 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/kit-haskell-shampoo-condicionador-300ml-mandioca/p
+2026-05-31 09:28:07,061 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/gelo-bio-00333mlml-00333gml-00083gml-frasco-aerossol-com-150ml-de-solucao-de-uso-dermatologico/p
+2026-05-31 09:28:07,307 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/tonalizante-keraton-hard-colors-indie-blue-com-100g/p
+2026-05-31 09:28:19,318 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/recarga-novex-sonho-meu-80g/p
+2026-05-31 09:28:26,125 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/condicionador-eudora-siage-revela-os-cachos-200ml/p
+2026-05-31 09:28:27,135 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/tala-punho-bege-esquerda-pequena-mercur/p
+2026-05-31 09:28:27,245 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/base-top-beauty-xi-lascou-sos-unhas-7ml/p
+2026-05-31 09:28:28,527 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/suporte-de-ombro-hidrolight-g/p
+2026-05-31 09:28:28,868 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/tena-pants-men-pm-16un/p
+2026-05-31 09:28:29,081 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/tala-extensao-dedos-em-pvc-ortofly-transparente-extgde/p
+2026-05-31 09:28:36,339 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/tanduo-0504mg-30cps-gel/p
+2026-05-31 09:28:36,463 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/colchao-pneumatico-sapphire-com-motor-110v/p
+2026-05-31 09:33:09,498 - INFO - --- Drogaven Scraper Starting ---
+2026-05-31 09:33:09,498 - INFO - Iniciando teste com 5000 URLs
+2026-05-31 09:33:09,498 - INFO - Baixando sitemap: https://io.convertiez.com.br/s/drogaven/sitemap-products-1.xml
+2026-05-31 09:33:12,682 - INFO - Encontradas 21632 URLs de produtos.
+2026-05-31 09:33:12,683 - INFO - Extraindo 5000 URLs de produtos para teste...
+2026-05-31 09:33:58,592 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/exulta-60cpr/p
+2026-05-31 09:34:03,161 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/tentantes-30cpr-revestidos-30cps-mole/p
+2026-05-31 09:34:03,502 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/sabonete-dermotivin-original-barra-90g/p
+2026-05-31 09:34:29,885 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/sabonete-dino-limao-siciliano-liquido-500ml/p
+2026-05-31 09:34:57,553 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/ciclobenzaprina-10mg-15cpr-ems-generico/p
+2026-05-31 09:34:57,632 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/fralda-babysec-galinha-pintadinha-ultrasec-hiper-xxxg-42unid/p
+2026-05-31 09:34:57,804 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/cilios-posticos-3d-crush-kpei156br-1par/p
+2026-05-31 09:34:58,276 - ERROR - Failed to fetch URL: https://www.drogaven.com.br/mascara-tratamento-dove-2em1-reconstrucaoaminoacido-320g/p
+2026-05-31 09:34:58,310 - INFO - Dados salvos em JSON: c:\Users\Fabio\Git\drogacentro\output\Scrape_Drogaven_2026-05-31.json
+2026-05-31 09:34:58,310 - WARNING - Nenhum dado para salvar.
+2026-05-31 09:34:58,310 - INFO - --- Drogaven Finish ---
+2026-05-31 09:34:58,310 - INFO - Tempo total: 108.81 segundos
+2026-05-31 09:34:58,311 - INFO - Total de produtos com sucesso: 0
+2026-05-31 09:34:58,311 - INFO - Total de produtos sem EAN: 4992
+2026-05-31 09:34:58,311 - INFO - Total de produtos com falha: 8
