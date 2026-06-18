@@ -1,0 +1,22 @@
+2026-06-18 17:49:48,823 - INFO - --- Drogaven Scraper Starting ---
+2026-06-18 17:49:48,824 - INFO - Loaded 3008 unique EANs from input file.
+2026-06-18 17:49:48,824 - INFO - Test Run: Scraping a sample of 10 EANs...
+2026-06-18 17:49:50,699 - INFO - Dados salvos em JSON: C:\Users\Fabio\Git\drogacentro\output\Scrape_Drogaven_2026-06-18.json
+2026-06-18 17:49:50,750 - INFO - Dados salvos em CSV: C:\Users\Fabio\Git\drogacentro\output\Scrape_Drogaven_2026-06-18.csv.
+2026-06-18 17:49:51,151 - INFO - Dados salvos em Excel: C:\Users\Fabio\Git\drogacentro\output\Scrape_Drogaven_2026-06-18.xlsx.
+2026-06-18 17:49:51,151 - INFO - --- Drogaven Finish ---
+2026-06-18 17:49:51,151 - INFO - Tempo total: 2.33 segundos
+2026-06-18 17:49:51,151 - INFO - Total de produtos com sucesso: 6
+2026-06-18 17:49:51,151 - INFO - Total de produtos não encontrados/sem estoque: 4
+2026-06-18 17:49:51,151 - INFO - Final count of blacklisted UAs: 0
+2026-06-18 17:52:04,668 - INFO - --- Drogaven Scraper Starting ---
+2026-06-18 17:52:04,669 - INFO - Loaded 3008 unique EANs from input file.
+2026-06-18 17:52:04,669 - INFO - Test Run: Scraping a sample of 250 EANs...
+2026-06-18 17:52:24,574 - INFO - Dados salvos em JSON: c:\Users\Fabio\Git\drogacentro\output\Scrape_Drogaven_2026-06-18.json
+2026-06-18 17:52:24,580 - INFO - Dados salvos em CSV: c:\Users\Fabio\Git\drogacentro\output\Scrape_Drogaven_2026-06-18.csv.
+2026-06-18 17:52:24,759 - INFO - Dados salvos em Excel: c:\Users\Fabio\Git\drogacentro\output\Scrape_Drogaven_2026-06-18.xlsx.
+2026-06-18 17:52:24,760 - INFO - --- Drogaven Finish ---
+2026-06-18 17:52:24,760 - INFO - Tempo total: 20.09 segundos
+2026-06-18 17:52:24,760 - INFO - Total de produtos com sucesso: 130
+2026-06-18 17:52:24,760 - INFO - Total de produtos não encontrados/sem estoque: 120
+2026-06-18 17:52:24,760 - INFO - Final count of blacklisted UAs: 0

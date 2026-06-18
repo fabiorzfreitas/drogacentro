@@ -2,9 +2,11 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import time
+import random
 import concurrent.futures
 import os
 import pandas as pd
+from fake_useragent import UserAgent
 from datetime import datetime
 from tqdm import tqdm
 import logging
@@ -16,152 +18,198 @@ import logging
 log_filename = f"drogaven_scraper_{datetime.now().strftime('%Y%m%d')}.log"
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
+    format="%(asctime)s - %(levelname)s - %(message)s",
     handlers=[
-        logging.FileHandler(log_filename, encoding='utf-8'),
-        logging.StreamHandler()
-    ]
+        logging.FileHandler(log_filename, encoding="utf-8"),
+        logging.StreamHandler(),
+    ],
 )
 logger = logging.getLogger(__name__)
 
 # --- Configuration ---
-SITEMAP_URL = "https://io.convertiez.com.br/s/drogaven/sitemap-products-1.xml"
-OUTPUT_DIR = 'output'
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+# Find input/eans.txt (two levels up from scrapers/drogaven/)
+INPUT_EANS_FILE = os.path.abspath(
+    os.path.join(SCRIPT_DIR, "..", "..", "input", "eans.txt")
+)
+OUTPUT_DIR = "output"
 
-# Set the maximum number of worker threads for multi-threading
-MAX_WORKERS = 150 # You can adjust this value based on your system's capabilities and website's tolerance
-SLEEP_TIME = 2 # Seconds before next request
+# Set parameters for requests and concurrency
+MAX_WORKERS = 15
+MAX_RETRIES = 5
+MAX_403_CODES = 3
+INITIAL_SLEEP_TIME = 120
 
-# Control scraping scope: Set to True to scrape all unique URLs, False to scrape a sample
+# Control scraping scope
 TEST_RUN = True
-SAMPLE_SIZE = 500 # Number of URLs to scrape if SCRAPE_ALL_URLS is False
+SAMPLE_SIZE = 500  # Default test sample size (can be customized)
 
-# Selectors for data extraction
-PRICE_SELECTOR = 'p.seal-pix.pix-price.sale-price.sale-price-pix.money'
-NAME_SELECTOR = 'meta[name="description"]'
-EAN_SELECTOR = 'meta[itemprop="gtin13"]'
-
-# Headers to mimic a browser request and avoid being blocked
-HEADERS = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:142.0) Gecko/20100101 Firefox/142.0',
-    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-    'Accept-Language': 'en-US,en;q=0.5',
-    'Accept-Encoding': 'gzip, deflate, br',
-    'Connection': 'keep-alive',
-    'Upgrade-Insecure-Requests': '1'
+# Headers (without User-Agent) to mimic a browser request
+BASE_HEADERS = {
+    "Accept": "application/json, text/plain, */*",
+    "Accept-Language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Upgrade-Insecure-Requests": "1",
 }
 
+# Global rotating UserAgent variables
+global_ua_instance = UserAgent()
+bad_uas = set()
 
-logger.info('--- Drogaven Scraper Starting ---')
 
-# Checar a variável de teste
-if TEST_RUN:
-    logger.info(f'Iniciando teste com {SAMPLE_SIZE} URLs')
-
-# --- Funções acessórias ---
-
-def fetch_url(url):
+def url_attempt(url, max_retries):
     """
-    Baixa o conteúdo de uma URL com o User-Agent
+    Performs a single requests attempt using a rotating User-Agent.
     """
-    try:
-        response = requests.get(url, headers=HEADERS, timeout=10)
-        response.raise_for_status()
-        return response.content # Return raw bytes for BeautifulSoup to handle encoding
-    except requests.exceptions.RequestException:
-        logger.error(f"Failed to fetch URL: {url}")
-        return None
-
-
-def extract_product_urls_from_sitemap(sitemap_url):
-    """
-    Extrai as URLs de produtos de um sitemap XML
-    O sitemap deve ter a tag <loc> nas URLs
-    """
-    logger.info(f"Baixando sitemap: {sitemap_url}")
-    xml_content = fetch_url(sitemap_url)
-    if not xml_content:
-        return []
-
-    soup = BeautifulSoup(xml_content, 'xml')
-    urls = [loc_tag.get_text() for loc_tag in soup.find_all('loc')]
-    time.sleep(SLEEP_TIME)
-    return urls
-
-
-def parse_product_page(html_content, url):
-    """
-    Lê a página do produto e extrai preço, EAN e nome a partir de uma URL
-    Retorna um dicionário com as informações do produto ou None se o produto não estiver disponível
-    """
-    logger.debug(f"Parsing product page for {url}. Content type: {type(html_content)}")
-    soup = BeautifulSoup(html_content, 'html.parser')
-    product_data = {"url": url, "price": None, "ean": None, "name": None}
-
-
-    # Extrai a tag para o preço
-    try:
-        price_paragraph = soup.select_one(PRICE_SELECTOR)
-        strong_tag = price_paragraph.find('strong')
-        price_text = strong_tag.get_text(strip=True)
-        cleaned_price = price_text.replace('R$', '').replace(',', '.').strip()
-        price_decimal = float(cleaned_price)
-        product_data['price'] = price_decimal
-    except (AttributeError, ValueError, TypeError):
-        pass
-
-    # Extrai a tag para o nome
-    try:
-        name_description_tag = soup.select_one(NAME_SELECTOR)
-        product_data["name"] = name_description_tag.get('content')
-    except (json.JSONDecodeError, AttributeError):
-        pass
-                
-    # Extrai a tag para o EAN (Improved Logic)
-    # 1. Check all JSON-LD blocks
-    json_ld_tags = soup.find_all('script', type='application/ld+json')
-    for tag in json_ld_tags:
+    last_status_code = None
+    for attempt in range(max_retries):
+        current_ua_string = ""
         try:
-            data = json.loads(tag.string)
-            if isinstance(data, dict) and 'gtin13' in data:
-                product_data["ean"] = data.get('gtin13')
-                break
-        except (json.JSONDecodeError, TypeError):
-            continue
+            # Get a new random User-Agent that is not blacklisted
+            current_ua_string = global_ua_instance.random
+            while current_ua_string in bad_uas:
+                current_ua_string = global_ua_instance.random
 
-    # 2. Fallback to Meta Tag if still missing
-    if not product_data["ean"]:
-        meta_ean = soup.select_one(EAN_SELECTOR)
-        if meta_ean:
-            product_data["ean"] = meta_ean.get('content')
+            headers = BASE_HEADERS.copy()
+            headers["User-Agent"] = current_ua_string
 
-    if (product_data["ean"] or product_data["name"]) and (product_data["price"] is None or product_data["price"] == ""):
-        logger.debug(f"Product excluded (missing price): {url}")
+            logger.debug(f"Attempt {attempt + 1} of {max_retries}: Fetching {url}")
+            response = requests.get(url, headers=headers, timeout=10)
+
+            # Raise exception if status is 4xx/5xx
+            response.raise_for_status()
+
+            logger.debug(f"✅ Success with UA: {current_ua_string}")
+            return response.json()
+
+        except Exception as e:
+            if isinstance(e, requests.exceptions.HTTPError) and e.response is not None:
+                last_status_code = e.response.status_code
+
+            logger.warning(f"Request failed for {url}: {e}")
+            logger.debug(f"❌ Failed with User-Agent: {current_ua_string}")
+            bad_uas.add(current_ua_string)
+
+            # If we hit 403 on the last retry, pass it back to handle backoff
+            if attempt == max_retries - 1 and last_status_code == 403:
+                return last_status_code
+
+            sleep_time = random.uniform(1, 3)
+            logger.debug(f"Retrying in {sleep_time:.2f} seconds...")
+            time.sleep(sleep_time)
+
+    return last_status_code
+
+
+def fetch_url(url, max_retries=MAX_RETRIES, max_403_attempts=MAX_403_CODES):
+    """
+    Handles request fetching with exponential backoff on 403 errors.
+    """
+    current_sleep_time = INITIAL_SLEEP_TIME
+    consecutive_403_count = 0
+
+    while consecutive_403_count < max_403_attempts:
+        last_response = url_attempt(url, max_retries)
+
+        # Successfully parsed JSON dict/list
+        if isinstance(last_response, (dict, list)):
+            return last_response
+
+        # Exponential backoff on 403 Forbidden
+        if last_response == 403 and current_sleep_time < 3600:
+            consecutive_403_count += 1
+            logger.warning(
+                f"⚠️ 403 Forbidden on {url}. Pausing for {current_sleep_time}s..."
+            )
+            time.sleep(current_sleep_time)
+            current_sleep_time = min(current_sleep_time * 1.5, 3600)
+        else:
+            logger.error(f"Abandoning URL {url}. Final status: {last_response}")
+            return None
+
+    logger.error(f"Max 403 attempts reached for {url}.")
+    return None
+
+
+def parse_api_response(response_json, ean):
+    """
+    Parses the suggest JSON response and returns a product info dict or None.
+    """
+    if not response_json or not isinstance(response_json, dict):
         return None
 
-    return product_data
-
-
-def scrape_single_product(url):
-    """
-    Função para o worker baixar e processar a URL de um um único produto
-    Retorna product_info ou None se o produto não estiver disponível
-    """
-    html_content = fetch_url(url)
-    if not html_content:
+    result_list = response_json.get("result_list", [])
+    if not result_list:
         return None
 
-    product_info = parse_product_page(html_content, url)
-    time.sleep(SLEEP_TIME) # Pausa entre os requests
+    # More than one result means the EAN is ambiguous/invalid (partial string match)
+    if len(result_list) != 1:
+        logger.debug(f"Skipping EAN {ean}: ambiguous response ({len(result_list)} results).")
+        return None
+
+    item = result_list[0]
+
+    name = item.get("name")
+    url_slug = item.get("url")
+
+    if not name or not url_slug:
+        return None
+
+    product_url = f"https://www.drogaven.com.br/{url_slug}/p"
+
+    price_decimal = None
+
+    # Try to extract the pix/seal price first (lowest price)
+    seals = item.get("seals", [])
+    for seal_html in seals:
+        if "seal-pix" in seal_html or "pix-price" in seal_html:
+            try:
+                soup = BeautifulSoup(seal_html, "html.parser")
+                strong_tag = soup.find("strong")
+                if strong_tag:
+                    price_text = strong_tag.get_text(strip=True)
+                    cleaned_price = (
+                        price_text.replace("R$", "").replace(",", ".").strip()
+                    )
+                    price_decimal = float(cleaned_price)
+                    break
+            except Exception as e:
+                logger.debug(f"Failed to parse seal price: {e}")
+
+    # Fallback to standard price field
+    if price_decimal is None:
+        try:
+            price_decimal = float(item.get("price"))
+        except (TypeError, ValueError):
+            pass
+
+    if price_decimal is None or price_decimal <= 0:
+        return None
+
+    return {"url": product_url, "price": price_decimal, "ean": ean, "name": name}
+
+
+def scrape_single_ean(ean):
+    """
+    Worker function to fetch and parse a single EAN.
+    """
+    url = f"https://www.drogaven.com.br/busca/suggest/?query_term={ean}"
+    response_json = fetch_url(url)
+    if not response_json:
+        return None
+
+    product_info = parse_api_response(response_json, ean)
+    # Add a short delay to be gentle to the servers
+    time.sleep(random.uniform(0.5, 1.5))
     return product_info
 
 
 def save_data_to_files(data, output_dir="output"):
     """
-    Saves data to project-level output folder
+    Saves data to project-level output folder in JSON, CSV, and XLSX format.
     """
-    # Go up two levels to reach the project root 'output'
-    base_output = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', output_dir))
+    base_output = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "..", output_dir))
     os.makedirs(base_output, exist_ok=True)
     date_str = datetime.now().strftime("%Y-%m-%d")
 
@@ -169,23 +217,26 @@ def save_data_to_files(data, output_dir="output"):
     csv_filepath = os.path.join(base_output, f"Scrape_Drogaven_{date_str}.csv")
     xlsx_filepath = os.path.join(base_output, f"Scrape_Drogaven_{date_str}.xlsx")
 
-    with open(json_filepath, 'w', encoding='utf-8') as f:
+    with open(json_filepath, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     logger.info(f"Dados salvos em JSON: {json_filepath}")
 
     if data:
         df = pd.DataFrame(data)
 
-        df.rename(columns={
-            "url": "Link",
-            "price": "Preço (R$)",
-            "ean": "EAN",
-            "name": "Produto"
-        }, inplace=True)
+        df.rename(
+            columns={
+                "url": "Link",
+                "price": "Preço (R$)",
+                "ean": "EAN",
+                "name": "Produto",
+            },
+            inplace=True,
+        )
 
         df = df[["EAN", "Produto", "Preço (R$)", "Link"]]
 
-        df.to_csv(csv_filepath, sep=';', index=False)
+        df.to_csv(csv_filepath, sep=";", index=False)
         logger.info(f"Dados salvos em CSV: {csv_filepath}.")
 
         df.to_excel(xlsx_filepath, index=False)
@@ -196,41 +247,46 @@ def save_data_to_files(data, output_dir="output"):
 
 def main():
     start_time = time.perf_counter()
+    logger.info("--- Drogaven Scraper Starting ---")
 
-    # Extrair todas as URLs de produtos
-    urls_from_sitemap = extract_product_urls_from_sitemap(SITEMAP_URL)
+    if not os.path.exists(INPUT_EANS_FILE):
+        logger.error(f"Input EAN file not found at: {INPUT_EANS_FILE}")
+        return
 
-    # Remover duplicados
-    unique_product_urls = list(set(urls_from_sitemap))
-    logger.info(f"Encontradas {len(unique_product_urls)} URLs de produtos.")
+    # Load and clean target EANs
+    with open(INPUT_EANS_FILE, "r", encoding="utf-8") as f:
+        eans = [line.strip() for line in f if line.strip()]
+
+    unique_eans = list(set(eans))
+    logger.info(f"Loaded {len(unique_eans)} unique EANs from input file.")
+
+    if TEST_RUN:
+        eans_to_scrape = unique_eans[:SAMPLE_SIZE]
+        logger.info(f"Test Run: Scraping a sample of {len(eans_to_scrape)} EANs...")
+    else:
+        eans_to_scrape = unique_eans
+        logger.info(f"Scraping all {len(eans_to_scrape)} EANs...")
 
     scraped_products = []
-    no_ean = []
-    total_failed_products = 0
+    not_found_count = 0
 
-    # Iniciar teste ou scraping
-    if TEST_RUN:
-        urls_to_scrape = unique_product_urls[:SAMPLE_SIZE]
-        logger.info(f"Extraindo {len(urls_to_scrape)} URLs de produtos para teste...")
-        with open(f'{OUTPUT_DIR}/drogaven_sample_urls.txt', 'w+', encoding='utf-8') as f:
-            for url in urls_to_scrape:
-                f.write(url + '\n')        
-    else:
-        urls_to_scrape = unique_product_urls
-        logger.info(f"Extraindo {len(urls_to_scrape)} URLs de produtos...")
-
-    # Usar workers para scraping em paralelo
+    # Execute suggest queries in parallel
     with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-        for product_info in tqdm(executor.map(scrape_single_product, urls_to_scrape), total=len(urls_to_scrape), desc="Extraindo Produtos..."):
-            if not product_info:
-                total_failed_products += 1
-                continue
-            if not product_info['ean']:
-                no_ean.append(product_info)
-                continue
-            scraped_products.append(product_info)
+        results = list(
+            tqdm(
+                executor.map(scrape_single_ean, eans_to_scrape),
+                total=len(eans_to_scrape),
+                desc="Scraping EANs via Suggest API",
+            )
+        )
 
-    # Salvar em arquivos
+    for product_info in results:
+        if product_info:
+            scraped_products.append(product_info)
+        else:
+            not_found_count += 1
+
+    # Save output files
     save_data_to_files(scraped_products, OUTPUT_DIR)
 
     end_time = time.perf_counter()
@@ -238,9 +294,8 @@ def main():
     logger.info(f"--- Drogaven Finish ---")
     logger.info(f"Tempo total: {total_time:.2f} segundos")
     logger.info(f"Total de produtos com sucesso: {len(scraped_products)}")
-    logger.info(f"Total de produtos sem EAN: {len(no_ean)}")
-    logger.info(f"Total de produtos com falha: {total_failed_products}")
-
+    logger.info(f"Total de produtos não encontrados/sem estoque: {not_found_count}")
+    logger.info(f"Final count of blacklisted UAs: {len(bad_uas)}")
 
 
 if __name__ == "__main__":
