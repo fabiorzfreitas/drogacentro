@@ -223,10 +223,31 @@ def scrape_single_ean(ean):
         product_info = parse_api_response(response_json, ean)
         # Add a short delay to be gentle to the servers
         time.sleep(random.uniform(0.5, 1.5))
+        logger.info(f"✅ EAN {ean}: '{product_info['name']}' — R$ {product_info['price']:.2f}")
         return product_info
     except ScraperSkipError as e:
-        logger.warning(f"Skipped — {e}")
+        logger.warning(f"⚠️ Skipped — {e}")
         return None
+
+
+def save_failed_eans(failed_eans, output_dir="output"):
+    """
+    Writes skipped/failed EANs (one per line) to output/errors/ for manual review.
+    """
+    if not failed_eans:
+        logger.info("Nenhum EAN com falha para exportar.")
+        return
+
+    errors_dir = os.path.abspath(
+        os.path.join(SCRIPT_DIR, "..", "..", output_dir, "errors")
+    )
+    os.makedirs(errors_dir, exist_ok=True)
+    date_str = datetime.now().strftime("%Y-%m-%d")
+    errors_filepath = os.path.join(errors_dir, f"Errors_Drogaven_{date_str}.txt")
+
+    with open(errors_filepath, "w", encoding="utf-8") as f:
+        f.write("\n".join(failed_eans))
+    logger.info(f"{len(failed_eans)} EANs com falha exportados para: {errors_filepath}")
 
 
 def save_data_to_files(data, output_dir="output"):
@@ -293,7 +314,7 @@ def main():
         logger.info(f"Scraping all {len(eans_to_scrape)} EANs...")
 
     scraped_products = []
-    not_found_count = 0
+    failed_eans = []
 
     # Execute suggest queries in parallel
     with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
@@ -305,21 +326,22 @@ def main():
             )
         )
 
-    for product_info in results:
+    for ean, product_info in zip(eans_to_scrape, results):
         if product_info:
             scraped_products.append(product_info)
         else:
-            not_found_count += 1
+            failed_eans.append(ean)
 
     # Save output files
     save_data_to_files(scraped_products, OUTPUT_DIR)
+    save_failed_eans(failed_eans, OUTPUT_DIR)
 
     end_time = time.perf_counter()
     total_time = end_time - start_time
     logger.info(f"--- Drogaven Finish ---")
     logger.info(f"Tempo total: {total_time:.2f} segundos")
     logger.info(f"Total de produtos com sucesso: {len(scraped_products)}")
-    logger.info(f"Total de produtos não encontrados/sem estoque: {not_found_count}")
+    logger.info(f"Total de EANs com falha: {len(failed_eans)}")
     logger.info(f"Final count of blacklisted UAs: {len(bad_uas)}")
 
 
