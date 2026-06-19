@@ -14,18 +14,6 @@ import logging
 # --- Required modules ---
 # python -m pip install requests lxml fake_useragent beautifulsoup4 tqdm pandas openpyxl
 
-# --- Logging Setup ---
-log_filename = f"drogaven_scraper_{datetime.now().strftime('%Y%m%d')}.log"
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-    handlers=[
-        logging.FileHandler(log_filename, encoding="utf-8"),
-        logging.StreamHandler(),
-    ],
-)
-logger = logging.getLogger(__name__)
-
 # --- Configuration ---
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 # Find input/eans.txt (two levels up from scrapers/drogaven/)
@@ -52,6 +40,31 @@ BASE_HEADERS = {
     "Connection": "keep-alive",
     "Upgrade-Insecure-Requests": "1",
 }
+
+# --- Logging Setup ---
+# Log file lives under <project_root>/output/logs/
+_log_dir = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "..", OUTPUT_DIR, "logs"))
+os.makedirs(_log_dir, exist_ok=True)
+log_filename = os.path.join(
+    _log_dir, f"drogaven_scraper_{datetime.now().strftime('%Y%m%dT%H%M')}.log"
+)
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    handlers=[
+        logging.FileHandler(log_filename, encoding="utf-8"),
+        logging.StreamHandler(),
+    ],
+)
+logger = logging.getLogger(__name__)
+
+
+# ---------------------------------------------------------------------------
+# Custom exception — raised when a single EAN should be skipped (non-fatal).
+# ---------------------------------------------------------------------------
+class ScraperSkipError(Exception):
+    """Raised when an EAN should be skipped; never propagates past scrape_single_ean."""
+
 
 # Global rotating UserAgent variables
 global_ua_instance = UserAgent()
@@ -105,6 +118,7 @@ def url_attempt(url, max_retries):
 def fetch_url(url, max_retries=MAX_RETRIES, max_403_attempts=MAX_403_CODES):
     """
     Handles request fetching with exponential backoff on 403 errors.
+    Raises ScraperSkipError if the URL cannot be fetched after all retries.
     """
     current_sleep_time = INITIAL_SLEEP_TIME
     consecutive_403_count = 0
@@ -125,28 +139,31 @@ def fetch_url(url, max_retries=MAX_RETRIES, max_403_attempts=MAX_403_CODES):
             time.sleep(current_sleep_time)
             current_sleep_time = min(current_sleep_time * 1.5, 3600)
         else:
-            logger.error(f"Abandoning URL {url}. Final status: {last_response}")
-            return None
+            raise ScraperSkipError(
+                f"Abandoning URL after failed retries (status: {last_response}): {url}"
+            )
 
-    logger.error(f"Max 403 attempts reached for {url}.")
-    return None
+    raise ScraperSkipError(f"Max 403 attempts ({max_403_attempts}) reached for: {url}")
 
 
 def parse_api_response(response_json, ean):
     """
-    Parses the suggest JSON response and returns a product info dict or None.
+    Parses the suggest JSON response and returns a product info dict.
+    Raises ScraperSkipError for any condition that should skip this EAN.
     """
     if not response_json or not isinstance(response_json, dict):
-        return None
+        raise ScraperSkipError(f"EAN {ean}: invalid or empty API response.")
 
     result_list = response_json.get("result_list", [])
+
     if not result_list:
-        return None
+        raise ScraperSkipError(f"EAN {ean}: not found (empty result_list).")
 
     # More than one result means the EAN is ambiguous/invalid (partial string match)
     if len(result_list) != 1:
-        logger.debug(f"Skipping EAN {ean}: ambiguous response ({len(result_list)} results).")
-        return None
+        raise ScraperSkipError(
+            f"EAN {ean}: ambiguous response ({len(result_list)} results) — likely an invalid EAN."
+        )
 
     item = result_list[0]
 
@@ -154,7 +171,9 @@ def parse_api_response(response_json, ean):
     url_slug = item.get("url")
 
     if not name or not url_slug:
-        return None
+        raise ScraperSkipError(
+            f"EAN {ean}: missing required fields (name={name!r}, url={url_slug!r})."
+        )
 
     product_url = f"https://www.drogaven.com.br/{url_slug}/p"
 
@@ -175,7 +194,7 @@ def parse_api_response(response_json, ean):
                     price_decimal = float(cleaned_price)
                     break
             except Exception as e:
-                logger.debug(f"Failed to parse seal price: {e}")
+                logger.debug(f"EAN {ean}: failed to parse seal price: {e}")
 
     # Fallback to standard price field
     if price_decimal is None:
@@ -185,7 +204,9 @@ def parse_api_response(response_json, ean):
             pass
 
     if price_decimal is None or price_decimal <= 0:
-        return None
+        raise ScraperSkipError(
+            f"EAN {ean}: no valid price found (price={item.get('price')!r})."
+        )
 
     return {"url": product_url, "price": price_decimal, "ean": ean, "name": name}
 
@@ -193,16 +214,19 @@ def parse_api_response(response_json, ean):
 def scrape_single_ean(ean):
     """
     Worker function to fetch and parse a single EAN.
+    Returns a product dict on success, or None if the EAN is skipped.
+    ScraperSkipError is caught here so individual failures never halt the pool.
     """
     url = f"https://www.drogaven.com.br/busca/suggest/?query_term={ean}"
-    response_json = fetch_url(url)
-    if not response_json:
+    try:
+        response_json = fetch_url(url)
+        product_info = parse_api_response(response_json, ean)
+        # Add a short delay to be gentle to the servers
+        time.sleep(random.uniform(0.5, 1.5))
+        return product_info
+    except ScraperSkipError as e:
+        logger.warning(f"Skipped — {e}")
         return None
-
-    product_info = parse_api_response(response_json, ean)
-    # Add a short delay to be gentle to the servers
-    time.sleep(random.uniform(0.5, 1.5))
-    return product_info
 
 
 def save_data_to_files(data, output_dir="output"):
@@ -248,6 +272,7 @@ def save_data_to_files(data, output_dir="output"):
 def main():
     start_time = time.perf_counter()
     logger.info("--- Drogaven Scraper Starting ---")
+    logger.info(f"Log file: {log_filename}")
 
     if not os.path.exists(INPUT_EANS_FILE):
         logger.error(f"Input EAN file not found at: {INPUT_EANS_FILE}")
