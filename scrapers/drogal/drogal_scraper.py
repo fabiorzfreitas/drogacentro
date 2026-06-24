@@ -12,8 +12,18 @@ import logging
 # --- Módulos necessários ---
 # python -m pip install requests lxml fake_useragent beautifulsoup4 tqdm pandas openpyxl
 
+# --- Configuração ---
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+ROOT_SITEMAP_URL = "https://www.drogal.com.br/sitemap.xml"
+OUTPUT_DIR = 'output'
+
 # --- Logging Setup ---
-log_filename = f"drogal_scraper_{datetime.now().strftime('%Y%m%d')}.log"
+# Log file lives under <project_root>/output/logs/
+_log_dir = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "..", OUTPUT_DIR, "logs"))
+os.makedirs(_log_dir, exist_ok=True)
+log_filename = os.path.join(
+    _log_dir, f"drogal_scraper_{datetime.now().strftime('%Y%m%dT%H%M')}.log"
+)
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
@@ -23,10 +33,6 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
-
-# --- Configuração ---
-ROOT_SITEMAP_URL = "https://www.drogal.com.br/sitemap.xml"
-OUTPUT_DIR = 'output'
 
 # Limites de raspagem
 MAX_WORKERS = 150  # Número máximo de threads para scraping paralelo
@@ -116,45 +122,57 @@ def parse_product_page(html_content, url):
     Retorna um dicionário com as informações do produto ou None se o produto não estiver disponível
     """
     logger.debug(f"Parsing product page for {url}. Content type: {type(html_content)}")
-    soup = BeautifulSoup(html_content, 'html.parser')
-    product_data = {"url": url, "price": None, "ean": None, "name": None}
-
-
-    # Extrai a tag para o preço
     try:
-        price_tag = soup.select_one(PRICE_SELECTOR)
-        product_data['price'] = float(price_tag.get('content'))
-    except (AttributeError, ValueError, TypeError):
-        pass
+        soup = BeautifulSoup(html_content, 'html.parser')
+        product_data = {"url": url, "price": None, "ean": None, "name": None}
 
-    # Extrai a tag para o nome
-    json_ld_content = None
-    json_string = soup.select_one(NAME_SELECTOR)
-    if json_string and json_string.string:
+        # Extrai a tag para o preço
         try:
-            json_ld_content = json.loads(json_string.string)
-            product_data["name"] = json_ld_content.get('name')
-        except (json.JSONDecodeError, AttributeError):
-            pass
+            price_tag = soup.select_one(PRICE_SELECTOR)
+            if price_tag:
+                content_val = price_tag.get('content')
+                product_data['price'] = float(content_val) if content_val else None
+            else:
+                logger.warning(f"Price tag not found (selector: {PRICE_SELECTOR}) for {url}")
+        except (AttributeError, ValueError, TypeError) as e:
+            logger.warning(f"Failed to parse price for {url}: {e}")
 
-    # Extrai a tag para a ean
-    ean_script = soup.select_one(EAN_SELECTOR)
-    try:
-        ean_json = json.loads(ean_script.string)
-        for key, value in ean_json.items():
-            if not key.endswith('.items.0') or not isinstance(value, dict):
-                continue
-            ean_candidate = value.get('ean')
-            if ean_candidate:
-                product_data["ean"] = ean_candidate
-                break
-    except json.JSONDecodeError:
-        pass
+        # Extrai a tag para o nome
+        json_string = soup.select_one(NAME_SELECTOR)
+        if json_string and json_string.string:
+            try:
+                json_ld_content = json.loads(json_string.string)
+                product_data["name"] = json_ld_content.get('name')
+            except (json.JSONDecodeError, AttributeError) as e:
+                logger.warning(f"Failed to parse name JSON-LD for {url}: {e}")
+        else:
+            logger.warning(f"Name selector not found or empty (selector: {NAME_SELECTOR}) for {url}")
 
-    if (product_data["ean"] or product_data["name"]) and (product_data["price"] is None or product_data["price"] == ""):
+        # Extrai a tag para a ean
+        ean_script = soup.select_one(EAN_SELECTOR)
+        if ean_script and ean_script.string:
+            try:
+                ean_json = json.loads(ean_script.string)
+                for key, value in ean_json.items():
+                    if not key.endswith('.items.0') or not isinstance(value, dict):
+                        continue
+                    ean_candidate = value.get('ean')
+                    if ean_candidate:
+                        product_data["ean"] = ean_candidate
+                        break
+            except json.JSONDecodeError as e:
+                logger.warning(f"Failed to decode EAN JSON for {url}: {e}")
+        else:
+            logger.warning(f"EAN script not found or empty (selector: {EAN_SELECTOR}) for {url}")
+
+        if (product_data["ean"] or product_data["name"]) and (product_data["price"] is None or product_data["price"] == ""):
+            logger.warning(f"Product data has EAN/Name but invalid price: {product_data} for {url}")
+            return None
+
+        return product_data
+    except Exception as e:
+        logger.exception(f"Unexpected exception in parse_product_page for {url}: {e}")
         return None
-
-    return product_data
 
 
 def scrape_single_product(url):
@@ -162,13 +180,18 @@ def scrape_single_product(url):
     Função para o worker baixar e processar a URL de um um único produto
     Retorna product_info ou None se o produto não estiver disponível
     """
-    html_content = fetch_url(url)
-    if not html_content:
-        return None
+    try:
+        html_content = fetch_url(url)
+        if not html_content:
+            logger.warning(f"No HTML content returned for {url}")
+            return None
 
-    product_info = parse_product_page(html_content, url)
-    time.sleep(SLEEP_TIME) # Pausa entre os requests
-    return product_info
+        product_info = parse_product_page(html_content, url)
+        time.sleep(SLEEP_TIME) # Pausa entre os requests
+        return product_info
+    except Exception as e:
+        logger.exception(f"Unexpected exception in scrape_single_product for {url}: {e}")
+        return None
 
 
 def save_data_to_files(data, output_dir="output"):
