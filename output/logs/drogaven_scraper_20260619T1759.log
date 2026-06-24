@@ -1,0 +1,525 @@
+2026-06-19 17:59:13,970 - INFO - --- Drogaven Scraper Starting ---
+2026-06-19 17:59:13,970 - INFO - Log file: C:\Users\Usuario\Desktop\drogacentroo\output\logs\drogaven_scraper_20260619T1759.log
+2026-06-19 17:59:13,976 - INFO - Loaded 27589 unique EANs from input file.
+2026-06-19 17:59:13,976 - INFO - Test Run: Scraping a sample of 500 EANs...
+2026-06-19 17:59:14,099 - WARNING - ⚠️ Skipped — EAN 7891155050094: not found (empty result_list).
+2026-06-19 17:59:14,212 - WARNING - ⚠️ Skipped — EAN 7896444601995: not found (empty result_list).
+2026-06-19 17:59:14,328 - WARNING - ⚠️ Skipped — EAN 7896676415797: not found (empty result_list).
+2026-06-19 17:59:14,430 - WARNING - ⚠️ Skipped — EAN 7896451911582: not found (empty result_list).
+2026-06-19 17:59:14,554 - WARNING - ⚠️ Skipped — EAN 7896025541412: not found (empty result_list).
+2026-06-19 17:59:14,662 - WARNING - ⚠️ Skipped — EAN 7891000107836: not found (empty result_list).
+2026-06-19 17:59:14,852 - WARNING - ⚠️ Skipped — EAN 7908077445997: not found (empty result_list).
+2026-06-19 17:59:14,992 - WARNING - ⚠️ Skipped — EAN 7898078313879: not found (empty result_list).
+2026-06-19 17:59:15,117 - WARNING - ⚠️ Skipped — EAN 7897744504856: not found (empty result_list).
+2026-06-19 17:59:15,232 - WARNING - ⚠️ Skipped — EAN 7896261000018: not found (empty result_list).
+2026-06-19 17:59:15,372 - WARNING - ⚠️ Skipped — EAN 7896013549543: not found (empty result_list).
+2026-06-19 17:59:15,475 - WARNING - ⚠️ Skipped — EAN 7899970401206: not found (empty result_list).
+2026-06-19 17:59:15,607 - WARNING - ⚠️ Skipped — EAN 7891240002755: not found (empty result_list).
+2026-06-19 17:59:15,741 - WARNING - ⚠️ Skipped — EAN 7891033517855: not found (empty result_list).
+2026-06-19 17:59:15,869 - WARNING - ⚠️ Skipped — EAN 7506195133491: not found (empty result_list).
+2026-06-19 17:59:16,223 - WARNING - ⚠️ Skipped — EAN 7898671424583: not found (empty result_list).
+2026-06-19 17:59:16,869 - INFO - ✅ EAN 7896004757445: 'Latonan 0,05mg/mL + 5mg/mL, frasco com 2,5mL de solução de uso oftálmico' — R$ 199.27
+2026-06-19 17:59:17,737 - INFO - ✅ EAN 7891033931316: 'Óleo Bifásico Capilar Eudora Siàge Nutri Óleos Poderosos 90mL' — R$ 51.84
+2026-06-19 17:59:17,876 - WARNING - ⚠️ Skipped — EAN 7896150018490: not found (empty result_list).
+2026-06-19 17:59:18,055 - WARNING - ⚠️ Skipped — EAN 7896380606696: not found (empty result_list).
+2026-06-19 17:59:18,179 - WARNING - ⚠️ Skipped — EAN 7898760940932: not found (empty result_list).
+2026-06-19 17:59:18,333 - WARNING - ⚠️ Skipped — EAN 7898258621688: not found (empty result_list).
+2026-06-19 17:59:18,514 - WARNING - ⚠️ Skipped — EAN 7896641806056: not found (empty result_list).
+2026-06-19 17:59:18,658 - WARNING - ⚠️ Skipped — EAN 7898570572408: not found (empty result_list).
+2026-06-19 17:59:19,315 - INFO - ✅ EAN 7896004713342: 'Acetilcisteína EMS 600mg/g, 16 envelopes com 5g de granulado de uso oral, sabor laranja' — R$ 36.25
+2026-06-19 17:59:19,449 - WARNING - ⚠️ Skipped — EAN 7891058006259: not found (empty result_list).
+2026-06-19 17:59:20,236 - INFO - ✅ EAN 7899095202351: 'Sensilacri 1mg/mL + 3mg/mL, frasco gotejador com 15mL de solução de uso oftálmico' — R$ 22.10
+2026-06-19 17:59:20,334 - WARNING - ⚠️ Skipped — EAN 7898639063359: not found (empty result_list).
+2026-06-19 17:59:20,752 - WARNING - ⚠️ Skipped — EAN 7896444601353: not found (empty result_list).
+2026-06-19 17:59:20,889 - WARNING - ⚠️ Skipped — EAN 7894916147729: not found (empty result_list).
+2026-06-19 17:59:21,143 - WARNING - ⚠️ Skipped — EAN 7908615012049: not found (empty result_list).
+2026-06-19 17:59:21,272 - WARNING - ⚠️ Skipped — EAN 7909883126216: not found (empty result_list).
+2026-06-19 17:59:21,691 - WARNING - ⚠️ Skipped — EAN 7896658038716: not found (empty result_list).
+2026-06-19 17:59:21,799 - WARNING - ⚠️ Skipped — EAN 7899918921018: not found (empty result_list).
+2026-06-19 17:59:23,193 - INFO - ✅ EAN 7896049528604: 'Desodorante Antitranspirante Creme Herbíssimo Fresh 55g' — R$ 7.83
+2026-06-19 17:59:23,303 - WARNING - ⚠️ Skipped — EAN 7898258622630: not found (empty result_list).
+2026-06-19 17:59:24,724 - INFO - ✅ EAN 7896044997580: 'Body Splash Giovanna Baby Lilac 260mL' — R$ 31.26
+2026-06-19 17:59:24,886 - WARNING - ⚠️ Skipped — EAN 7896444602800: not found (empty result_list).
+2026-06-19 17:59:25,004 - WARNING - ⚠️ Skipped — EAN 7897256264743: not found (empty result_list).
+2026-06-19 17:59:25,131 - WARNING - ⚠️ Skipped — EAN 7898671425337: not found (empty result_list).
+2026-06-19 17:59:26,503 - INFO - ✅ EAN 7891317123994: 'Olmesartana Medoxomila + Hidroclorotiazida Eurofarma 40mg + 12,5mg, com 30 comprimidos revestidos' — R$ 42.01
+2026-06-19 17:59:26,619 - WARNING - ⚠️ Skipped — EAN 7898647921924: not found (empty result_list).
+2026-06-19 17:59:26,939 - WARNING - ⚠️ Skipped — EAN 7898474841273: not found (empty result_list).
+2026-06-19 17:59:27,063 - WARNING - ⚠️ Skipped — EAN 7896637022903: not found (empty result_list).
+2026-06-19 17:59:27,196 - WARNING - ⚠️ Skipped — EAN 7908458317332: not found (empty result_list).
+2026-06-19 17:59:27,307 - WARNING - ⚠️ Skipped — EAN 7894494192012: not found (empty result_list).
+2026-06-19 17:59:27,417 - WARNING - ⚠️ Skipped — EAN 6980331110163: not found (empty result_list).
+2026-06-19 17:59:27,534 - WARNING - ⚠️ Skipped — EAN 6932159608513: not found (empty result_list).
+2026-06-19 17:59:27,729 - WARNING - ⚠️ Skipped — EAN 7898582680221: not found (empty result_list).
+2026-06-19 17:59:27,836 - WARNING - ⚠️ Skipped — EAN 7908346900691: not found (empty result_list).
+2026-06-19 17:59:27,951 - WARNING - ⚠️ Skipped — EAN 7908542612459: not found (empty result_list).
+2026-06-19 17:59:28,089 - WARNING - ⚠️ Skipped — EAN 7896111985571: not found (empty result_list).
+2026-06-19 17:59:28,199 - WARNING - ⚠️ Skipped — EAN 7897230303642: not found (empty result_list).
+2026-06-19 17:59:28,317 - WARNING - ⚠️ Skipped — EAN 7896036543610: not found (empty result_list).
+2026-06-19 17:59:28,653 - WARNING - ⚠️ Skipped — EAN 7891033510658: not found (empty result_list).
+2026-06-19 17:59:28,763 - WARNING - ⚠️ Skipped — EAN 7896013569817: not found (empty result_list).
+2026-06-19 17:59:28,937 - WARNING - ⚠️ Skipped — EAN 7891153073224: not found (empty result_list).
+2026-06-19 17:59:29,255 - WARNING - ⚠️ Skipped — EAN 7891150037274: not found (empty result_list).
+2026-06-19 17:59:29,355 - WARNING - ⚠️ Skipped — EAN 7898031310174: not found (empty result_list).
+2026-06-19 17:59:29,485 - WARNING - ⚠️ Skipped — EAN 7896637029117: not found (empty result_list).
+2026-06-19 17:59:29,544 - WARNING - Request failed for https://www.drogaven.com.br/busca/suggest/?query_term=7899420507762: Expecting value: line 1 column 1 (char 0)
+2026-06-19 17:59:31,389 - WARNING - Request failed for https://www.drogaven.com.br/busca/suggest/?query_term=7899420507762: Expecting value: line 1 column 1 (char 0)
+2026-06-19 17:59:35,034 - INFO - ✅ EAN 7899420507762: 'LONGFLEX 60CPS' — R$ 151.88
+2026-06-19 17:59:35,194 - WARNING - ⚠️ Skipped — EAN 7899783600780: not found (empty result_list).
+2026-06-19 17:59:35,303 - WARNING - ⚠️ Skipped — EAN 7898610375525: not found (empty result_list).
+2026-06-19 17:59:35,441 - WARNING - ⚠️ Skipped — EAN 7899014900313: not found (empty result_list).
+2026-06-19 17:59:35,556 - WARNING - ⚠️ Skipped — EAN 7897512904383: not found (empty result_list).
+2026-06-19 17:59:35,694 - WARNING - ⚠️ Skipped — EAN 7899085698188: not found (empty result_list).
+2026-06-19 17:59:36,425 - INFO - ✅ EAN 7891150088399: 'Creme para Pentear Seda Boom Definição Intensa 350mL' — R$ 15.18
+2026-06-19 17:59:37,709 - INFO - ✅ EAN 7898949409465: 'Proctan 5mg/g + 20mg/g + 20mg/g + 100mg/g, bisnaga com 25g de pomada de uso retal' — R$ 64.32
+2026-06-19 17:59:37,784 - WARNING - Request failed for https://www.drogaven.com.br/busca/suggest/?query_term=7898741804444: Expecting value: line 1 column 1 (char 0)
+2026-06-19 17:59:40,730 - WARNING - Request failed for https://www.drogaven.com.br/busca/suggest/?query_term=7898741804444: Expecting value: line 1 column 1 (char 0)
+2026-06-19 17:59:43,599 - WARNING - ⚠️ Skipped — EAN 7898741804444: not found (empty result_list).
+2026-06-19 17:59:43,703 - WARNING - ⚠️ Skipped — EAN 7894916372787: not found (empty result_list).
+2026-06-19 17:59:43,833 - WARNING - ⚠️ Skipped — EAN 7899852013404: not found (empty result_list).
+2026-06-19 17:59:43,951 - WARNING - ⚠️ Skipped — EAN 7896075709343: not found (empty result_list).
+2026-06-19 17:59:44,068 - WARNING - ⚠️ Skipped — EAN 7896042077123: not found (empty result_list).
+2026-06-19 17:59:44,182 - WARNING - ⚠️ Skipped — EAN 7898472262605: not found (empty result_list).
+2026-06-19 17:59:44,695 - WARNING - ⚠️ Skipped — EAN 7896885202911: not found (empty result_list).
+2026-06-19 17:59:44,811 - WARNING - ⚠️ Skipped — EAN 7892840822828: not found (empty result_list).
+2026-06-19 17:59:45,008 - WARNING - ⚠️ Skipped — EAN 7891033517848: not found (empty result_list).
+2026-06-19 17:59:46,612 - INFO - ✅ EAN 7509546080864: 'Escova Dental Colgate Zig-Zag Carvão (4 Unidades)' — R$ 25.38
+2026-06-19 17:59:48,025 - INFO - ✅ EAN 4005900183125: 'Protetor Solar Facial Eucerin Sun Oil Control FPS 60 com 52g' — R$ 107.70
+2026-06-19 17:59:48,145 - WARNING - ⚠️ Skipped — EAN 7908083520411: not found (empty result_list).
+2026-06-19 17:59:48,414 - WARNING - ⚠️ Skipped — EAN 7896111906507: not found (empty result_list).
+2026-06-19 17:59:48,547 - WARNING - ⚠️ Skipped — EAN 7892687812303: not found (empty result_list).
+2026-06-19 17:59:48,659 - WARNING - ⚠️ Skipped — EAN 7899783600360: not found (empty result_list).
+2026-06-19 17:59:48,836 - WARNING - ⚠️ Skipped — EAN 7898994336112: not found (empty result_list).
+2026-06-19 17:59:48,959 - WARNING - ⚠️ Skipped — EAN 7897169202597: not found (empty result_list).
+2026-06-19 17:59:49,146 - WARNING - ⚠️ Skipped — EAN 7898447973802: not found (empty result_list).
+2026-06-19 17:59:49,273 - WARNING - ⚠️ Skipped — EAN 7891150068537: not found (empty result_list).
+2026-06-19 17:59:50,757 - INFO - ✅ EAN 7896006230052: 'Drusolol 20mg/mL + 5mg/mL, frasco com 5mL de solução de uso oftálmico' — R$ 94.87
+2026-06-19 17:59:51,632 - INFO - ✅ EAN 7891058431037: 'Lasix 40mg, 20 comprimidos' — R$ 24.28
+2026-06-19 17:59:51,846 - WARNING - ⚠️ Skipped — EAN 7891317412708: not found (empty result_list).
+2026-06-19 17:59:51,972 - WARNING - ⚠️ Skipped — EAN 7896472521883: not found (empty result_list).
+2026-06-19 17:59:53,138 - INFO - ✅ EAN 7891317140458: 'Dienogeste Eurofarma 2mg, 30 comprimidos revestidos' — R$ 38.50
+2026-06-19 17:59:53,241 - WARNING - ⚠️ Skipped — EAN 7896422517621: not found (empty result_list).
+2026-06-19 17:59:54,016 - INFO - ✅ EAN 7899026420571: 'Condicionador Elseve Reparação Total 5+ 200mL' — R$ 21.55
+2026-06-19 17:59:54,129 - WARNING - ⚠️ Skipped — EAN 7898506256242: not found (empty result_list).
+2026-06-19 17:59:55,351 - INFO - ✅ EAN 7891150091221: 'CONDICIONADOR TRESEMME 650ML BRILHO LAMELAR' — R$ 38.12
+2026-06-19 17:59:55,561 - WARNING - ⚠️ Skipped — EAN 7908040481472: not found (empty result_list).
+2026-06-19 17:59:55,680 - WARNING - ⚠️ Skipped — EAN 7908083512683: not found (empty result_list).
+2026-06-19 17:59:55,780 - WARNING - ⚠️ Skipped — EAN 7898934930585: not found (empty result_list).
+2026-06-19 17:59:55,911 - WARNING - ⚠️ Skipped — EAN 7896033231992: not found (empty result_list).
+2026-06-19 17:59:56,041 - WARNING - ⚠️ Skipped — EAN 6941690703441: not found (empty result_list).
+2026-06-19 17:59:56,167 - WARNING - ⚠️ Skipped — EAN 7899783602388: not found (empty result_list).
+2026-06-19 17:59:56,299 - WARNING - ⚠️ Skipped — EAN 7898906376632: not found (empty result_list).
+2026-06-19 17:59:56,432 - WARNING - ⚠️ Skipped — EAN 8903855078618: not found (empty result_list).
+2026-06-19 17:59:56,568 - WARNING - ⚠️ Skipped — EAN 7891024114346: not found (empty result_list).
+2026-06-19 17:59:56,714 - WARNING - ⚠️ Skipped — EAN 7896798603775: not found (empty result_list).
+2026-06-19 17:59:56,837 - WARNING - ⚠️ Skipped — EAN 7891350044874: not found (empty result_list).
+2026-06-19 17:59:57,062 - WARNING - ⚠️ Skipped — EAN 6932159610561: not found (empty result_list).
+2026-06-19 17:59:57,146 - WARNING - Request failed for https://www.drogaven.com.br/busca/suggest/?query_term=7702045538762: Expecting value: line 1 column 1 (char 0)
+2026-06-19 17:59:59,740 - WARNING - Request failed for https://www.drogaven.com.br/busca/suggest/?query_term=7702045538762: Expecting value: line 1 column 1 (char 0)
+2026-06-19 18:00:01,722 - WARNING - ⚠️ Skipped — EAN 7702045538762: not found (empty result_list).
+2026-06-19 18:00:01,864 - WARNING - ⚠️ Skipped — EAN 7891321107522: not found (empty result_list).
+2026-06-19 18:00:02,037 - WARNING - ⚠️ Skipped — EAN 7896261006553: not found (empty result_list).
+2026-06-19 18:00:02,553 - WARNING - ⚠️ Skipped — EAN 7898962892909: not found (empty result_list).
+2026-06-19 18:00:02,671 - WARNING - ⚠️ Skipped — EAN 7891317043704: not found (empty result_list).
+2026-06-19 18:00:02,792 - WARNING - ⚠️ Skipped — EAN 7908458332984: not found (empty result_list).
+2026-06-19 18:00:02,936 - WARNING - ⚠️ Skipped — EAN 7898647925786: not found (empty result_list).
+2026-06-19 18:00:03,130 - WARNING - ⚠️ Skipped — EAN 7898590650216: not found (empty result_list).
+2026-06-19 18:00:03,226 - WARNING - ⚠️ Skipped — EAN 7908040449915: not found (empty result_list).
+2026-06-19 18:00:03,426 - WARNING - ⚠️ Skipped — EAN 7891027293512: not found (empty result_list).
+2026-06-19 18:00:03,550 - WARNING - ⚠️ Skipped — EAN 7898646541420: not found (empty result_list).
+2026-06-19 18:00:03,690 - WARNING - ⚠️ Skipped — EAN 7896181921523: not found (empty result_list).
+2026-06-19 18:00:03,799 - WARNING - ⚠️ Skipped — EAN 7898650621217: not found (empty result_list).
+2026-06-19 18:00:03,911 - WARNING - ⚠️ Skipped — EAN 7898225529061: not found (empty result_list).
+2026-06-19 18:00:04,031 - WARNING - ⚠️ Skipped — EAN 7891116169544: not found (empty result_list).
+2026-06-19 18:00:04,154 - WARNING - ⚠️ Skipped — EAN 7908148524934: not found (empty result_list).
+2026-06-19 18:00:04,416 - WARNING - ⚠️ Skipped — EAN 7898119186103: not found (empty result_list).
+2026-06-19 18:00:04,549 - WARNING - ⚠️ Skipped — EAN 7908458336456: not found (empty result_list).
+2026-06-19 18:00:05,401 - INFO - ✅ EAN 7899026413658: 'Esmalte Cremoso Colorama chic Bege' — R$ 7.83
+2026-06-19 18:00:06,656 - INFO - ✅ EAN 7896007540600: 'Absorvente Intimus Toda Protegida Sem Abas Suave 8 Unidades' — R$ 5.78
+2026-06-19 18:00:06,796 - WARNING - ⚠️ Skipped — EAN 7898048131243: not found (empty result_list).
+2026-06-19 18:00:06,963 - WARNING - ⚠️ Skipped — EAN 7891634011042: not found (empty result_list).
+2026-06-19 18:00:07,781 - INFO - ✅ EAN 4987188568729: 'Adesivo Infantil para Alívio da Febre Hisamitsu Bye Bye Fever 2 unidades com 5cm x 11cm cada' — R$ 15.37
+2026-06-19 18:00:07,933 - WARNING - ⚠️ Skipped — EAN 7891027152529: not found (empty result_list).
+2026-06-19 18:00:08,104 - WARNING - ⚠️ Skipped — EAN 7896036543214: not found (empty result_list).
+2026-06-19 18:00:08,244 - WARNING - ⚠️ Skipped — EAN 7899455904543: not found (empty result_list).
+2026-06-19 18:00:08,375 - WARNING - ⚠️ Skipped — EAN 7908209808515: not found (empty result_list).
+2026-06-19 18:00:08,577 - WARNING - ⚠️ Skipped — EAN 7908209806986: not found (empty result_list).
+2026-06-19 18:00:08,739 - WARNING - ⚠️ Skipped — EAN 7898650621866: not found (empty result_list).
+2026-06-19 18:00:08,817 - WARNING - Request failed for https://www.drogaven.com.br/busca/suggest/?query_term=7896108560460: Expecting value: line 1 column 1 (char 0)
+2026-06-19 18:00:11,132 - WARNING - ⚠️ Skipped — EAN 7896108560460: not found (empty result_list).
+2026-06-19 18:00:11,278 - WARNING - ⚠️ Skipped — EAN 7898170656003: not found (empty result_list).
+2026-06-19 18:00:11,522 - WARNING - ⚠️ Skipped — EAN 7897027201236: not found (empty result_list).
+2026-06-19 18:00:11,642 - WARNING - ⚠️ Skipped — EAN 7898483152117: not found (empty result_list).
+2026-06-19 18:00:13,098 - INFO - ✅ EAN 7891058467098: 'Novalgina Supositório 300mg, 5 supositórios infantil' — R$ 21.80
+2026-06-19 18:00:13,263 - WARNING - ⚠️ Skipped — EAN 7899753551579: not found (empty result_list).
+2026-06-19 18:00:13,374 - WARNING - ⚠️ Skipped — EAN 7897562200336: not found (empty result_list).
+2026-06-19 18:00:13,513 - WARNING - ⚠️ Skipped — EAN 7896902212558: not found (empty result_list).
+2026-06-19 18:00:13,850 - WARNING - ⚠️ Skipped — EAN 7898211383288: not found (empty result_list).
+2026-06-19 18:00:13,976 - WARNING - ⚠️ Skipped — EAN 7896132132992: not found (empty result_list).
+2026-06-19 18:00:14,640 - INFO - ✅ EAN 7895858017385: 'Benestare 625mg, 30 comprimidos revestidos' — R$ 64.16
+2026-06-19 18:00:15,921 - INFO - ✅ EAN 7898911494017: 'Espátula de Unha Katy inox, 1 unidade' — R$ 8.32
+2026-06-19 18:00:16,045 - WARNING - ⚠️ Skipped — EAN 7891321101803: not found (empty result_list).
+2026-06-19 18:00:16,154 - WARNING - ⚠️ Skipped — EAN 17898696040482: not found (empty result_list).
+2026-06-19 18:00:16,288 - WARNING - ⚠️ Skipped — EAN 7898623243514: not found (empty result_list).
+2026-06-19 18:00:16,392 - WARNING - ⚠️ Skipped — EAN 7896036540022: not found (empty result_list).
+2026-06-19 18:00:16,504 - WARNING - ⚠️ Skipped — EAN 7898302727953: not found (empty result_list).
+2026-06-19 18:00:17,898 - INFO - ✅ EAN 7891350043044: 'Esmalte Risqué Doritos Roxo de Fome 8ml' — R$ 7.98
+2026-06-19 18:00:19,137 - INFO - ✅ EAN 7891142206114: 'Hidratante Corporal Fortalecedor Epidrat Hyalu 50mL' — R$ 166.79
+2026-06-19 18:00:19,242 - WARNING - ⚠️ Skipped — EAN 10910030: not found (empty result_list).
+2026-06-19 18:00:19,934 - INFO - ✅ EAN 7898430192869: 'Dprev 2.000UI, 30 comprimidos revestidos' — R$ 49.88
+2026-06-19 18:00:20,090 - WARNING - ⚠️ Skipped — EAN 7898948960677: not found (empty result_list).
+2026-06-19 18:00:20,208 - WARNING - ⚠️ Skipped — EAN 7898132989392: not found (empty result_list).
+2026-06-19 18:00:20,309 - WARNING - ⚠️ Skipped — EAN 7898212285291: not found (empty result_list).
+2026-06-19 18:00:21,713 - INFO - ✅ EAN 7891158100239: 'Ensure Abbott chocolate, lata 400g' — R$ 115.29
+2026-06-19 18:00:21,836 - WARNING - ⚠️ Skipped — EAN 7899588012269: not found (empty result_list).
+2026-06-19 18:00:21,979 - WARNING - ⚠️ Skipped — EAN 7898631555852: not found (empty result_list).
+2026-06-19 18:00:22,125 - WARNING - ⚠️ Skipped — EAN 7897530101092: not found (empty result_list).
+2026-06-19 18:00:22,233 - WARNING - ⚠️ Skipped — EAN 7909883386818: not found (empty result_list).
+2026-06-19 18:00:22,355 - WARNING - ⚠️ Skipped — EAN 7896112102519: not found (empty result_list).
+2026-06-19 18:00:23,340 - INFO - ✅ EAN 7896111901991: 'Esmalte Impala A Cor da Moda Sofisticado' — R$ 4.90
+2026-06-19 18:00:23,464 - WARNING - ⚠️ Skipped — EAN 7899984402268: not found (empty result_list).
+2026-06-19 18:00:24,216 - INFO - ✅ EAN 7898662431002: 'Perfume Amakha Paris Chic Wonan Feminino 15ml' — R$ 35.18
+2026-06-19 18:00:24,339 - WARNING - ⚠️ Skipped — EAN 7898524347007: not found (empty result_list).
+2026-06-19 18:00:25,099 - INFO - ✅ EAN 7896004726724: 'Hormoskin 40mg/g + 0,5mg/g + 0,1mg/g, bisnaga com 15g de creme de uso dermatológico' — R$ 91.99
+2026-06-19 18:00:25,319 - WARNING - ⚠️ Skipped — EAN 6926641031385: not found (empty result_list).
+2026-06-19 18:00:25,388 - WARNING - Request failed for https://www.drogaven.com.br/busca/suggest/?query_term=7908040476782: Expecting value: line 1 column 1 (char 0)
+2026-06-19 18:00:28,205 - WARNING - Request failed for https://www.drogaven.com.br/busca/suggest/?query_term=7908040476782: Expecting value: line 1 column 1 (char 0)
+2026-06-19 18:00:30,274 - WARNING - ⚠️ Skipped — EAN 7908040476782: not found (empty result_list).
+2026-06-19 18:00:30,392 - WARNING - ⚠️ Skipped — EAN 7898481400135: not found (empty result_list).
+2026-06-19 18:00:30,516 - WARNING - ⚠️ Skipped — EAN 17891321230265: not found (empty result_list).
+2026-06-19 18:00:30,627 - WARNING - ⚠️ Skipped — EAN 7898410319958: not found (empty result_list).
+2026-06-19 18:00:30,787 - WARNING - ⚠️ Skipped — EAN 7897517928094: not found (empty result_list).
+2026-06-19 18:00:30,925 - WARNING - ⚠️ Skipped — EAN 7891060943443: not found (empty result_list).
+2026-06-19 18:00:31,031 - WARNING - ⚠️ Skipped — EAN 7896331706833: not found (empty result_list).
+2026-06-19 18:00:31,134 - WARNING - ⚠️ Skipped — EAN 6920200913020: not found (empty result_list).
+2026-06-19 18:00:32,030 - INFO - ✅ EAN 7896658027208: 'Dayvit Kids 120mL' — R$ 66.52
+2026-06-19 18:00:32,884 - INFO - ✅ EAN 7898430191336: 'Lynax bisnaga com 30g de gel de uso vaginal + aplicadores descartáveis de 2,5 g' — R$ 95.61
+2026-06-19 18:00:34,284 - INFO - ✅ EAN 7908236500413: 'Leave-In Uni Easy Evanes 250mL' — R$ 79.97
+2026-06-19 18:00:34,410 - WARNING - ⚠️ Skipped — EAN 7791293011769: not found (empty result_list).
+2026-06-19 18:00:34,560 - WARNING - ⚠️ Skipped — EAN 7898506721832: not found (empty result_list).
+2026-06-19 18:00:34,696 - WARNING - ⚠️ Skipped — EAN 731509752748: not found (empty result_list).
+2026-06-19 18:00:34,800 - WARNING - ⚠️ Skipped — EAN 7899852015590: not found (empty result_list).
+2026-06-19 18:00:35,583 - INFO - ✅ EAN 7891317432362: 'Musculare 10mg, 15 comprimidos revestidos' — R$ 20.49
+2026-06-19 18:00:35,694 - WARNING - ⚠️ Skipped — EAN 7898591450709: not found (empty result_list).
+2026-06-19 18:00:35,820 - WARNING - ⚠️ Skipped — EAN 7891360651000: not found (empty result_list).
+2026-06-19 18:00:35,933 - WARNING - ⚠️ Skipped — EAN 7898664978642: not found (empty result_list).
+2026-06-19 18:00:36,133 - WARNING - ⚠️ Skipped — EAN 7898610372463: not found (empty result_list).
+2026-06-19 18:00:36,289 - WARNING - ⚠️ Skipped — EAN 7898132987114: not found (empty result_list).
+2026-06-19 18:00:36,392 - WARNING - ⚠️ Skipped — EAN 7896380660926: not found (empty result_list).
+2026-06-19 18:00:36,518 - WARNING - ⚠️ Skipped — EAN 7896326957578: not found (empty result_list).
+2026-06-19 18:00:36,628 - WARNING - ⚠️ Skipped — EAN 7501007455112: not found (empty result_list).
+2026-06-19 18:00:36,728 - WARNING - ⚠️ Skipped — EAN 7896049502567: not found (empty result_list).
+2026-06-19 18:00:36,847 - WARNING - ⚠️ Skipped — EAN 7898157616280: not found (empty result_list).
+2026-06-19 18:00:36,983 - WARNING - ⚠️ Skipped — EAN 7896020160168: not found (empty result_list).
+2026-06-19 18:00:37,118 - WARNING - ⚠️ Skipped — EAN 6931759244534: not found (empty result_list).
+2026-06-19 18:00:37,251 - WARNING - ⚠️ Skipped — EAN 7897705203224: not found (empty result_list).
+2026-06-19 18:00:37,373 - WARNING - ⚠️ Skipped — EAN 7896016105036: not found (empty result_list).
+2026-06-19 18:00:37,478 - WARNING - ⚠️ Skipped — EAN 7896025531062: not found (empty result_list).
+2026-06-19 18:00:37,597 - WARNING - ⚠️ Skipped — EAN 7908823500048: not found (empty result_list).
+2026-06-19 18:00:37,718 - WARNING - ⚠️ Skipped — EAN 7908083523023: not found (empty result_list).
+2026-06-19 18:00:37,837 - WARNING - ⚠️ Skipped — EAN 7898132847524: not found (empty result_list).
+2026-06-19 18:00:38,016 - WARNING - ⚠️ Skipped — EAN 7908209804890: not found (empty result_list).
+2026-06-19 18:00:38,139 - WARNING - ⚠️ Skipped — EAN 7894222042909: not found (empty result_list).
+2026-06-19 18:00:38,253 - WARNING - ⚠️ Skipped — EAN 4064666318356: not found (empty result_list).
+2026-06-19 18:00:39,280 - INFO - ✅ EAN 7897473206861: 'Levolukast 10mg + 5mg, 14 comprimidos revestidos' — R$ 130.33
+2026-06-19 18:00:39,439 - WARNING - ⚠️ Skipped — EAN 7897840300734: not found (empty result_list).
+2026-06-19 18:00:39,669 - WARNING - ⚠️ Skipped — EAN 731509994797: not found (empty result_list).
+2026-06-19 18:00:39,777 - WARNING - ⚠️ Skipped — EAN 7896111947722: not found (empty result_list).
+2026-06-19 18:00:39,903 - WARNING - ⚠️ Skipped — EAN 7900083001853: not found (empty result_list).
+2026-06-19 18:00:40,146 - WARNING - ⚠️ Skipped — EAN 7897517906368: not found (empty result_list).
+2026-06-19 18:00:41,725 - INFO - ✅ EAN 7896004715896: 'Maleato de Timolol Germed Pharma 5mg/mL, frasco com 5mL de solução de uso oftálmico' — R$ 6.68
+2026-06-19 18:00:41,840 - WARNING - ⚠️ Skipped — EAN 7891653011122: not found (empty result_list).
+2026-06-19 18:00:41,962 - WARNING - ⚠️ Skipped — EAN 7909438047638: not found (empty result_list).
+2026-06-19 18:00:42,066 - WARNING - ⚠️ Skipped — EAN 7898506258963: not found (empty result_list).
+2026-06-19 18:00:42,193 - WARNING - ⚠️ Skipped — EAN 7909883168018: not found (empty result_list).
+2026-06-19 18:00:43,624 - INFO - ✅ EAN 7896637034050: 'Miosan Odt 5mg, caixa com 10 comprimidos orodispersíveis' — R$ 18.79
+2026-06-19 18:00:43,820 - WARNING - ⚠️ Skipped — EAN 7898647920163: not found (empty result_list).
+2026-06-19 18:00:45,274 - INFO - ✅ EAN 7896111903957: 'Esmalte Impala  Cremoso Pov Look Do Dia' — R$ 6.56
+2026-06-19 18:00:45,400 - WARNING - ⚠️ Skipped — EAN 7891023545172: not found (empty result_list).
+2026-06-19 18:00:45,534 - WARNING - ⚠️ Skipped — EAN 731509974560: not found (empty result_list).
+2026-06-19 18:00:45,701 - WARNING - ⚠️ Skipped — EAN 7898741530473: not found (empty result_list).
+2026-06-19 18:00:45,813 - WARNING - ⚠️ Skipped — EAN 7898595463064: not found (empty result_list).
+2026-06-19 18:00:47,071 - INFO - ✅ EAN 7899706238014: 'Tintura sem Amônia L'Oréal Imédia Excellence Universal Nudes n° 3U castanho escuro universal' — R$ 43.02
+2026-06-19 18:00:48,146 - INFO - ✅ EAN 7896714273006: 'Massageol 0,333mL + 0,333g + 0,0083g, tubo aerossol com 120mL de solução de uso dermatológico' — R$ 61.57
+2026-06-19 18:00:48,277 - WARNING - ⚠️ Skipped — EAN 7894222021799: not found (empty result_list).
+2026-06-19 18:00:49,308 - INFO - ✅ EAN 7898029557123: 'Procoralan 5mg, 56 comprimidos revestidos' — R$ 172.07
+2026-06-19 18:00:49,423 - WARNING - ⚠️ Skipped — EAN 7896637035460: not found (empty result_list).
+2026-06-19 18:00:49,609 - WARNING - ⚠️ Skipped — EAN 7899783601343: not found (empty result_list).
+2026-06-19 18:00:50,618 - INFO - ✅ EAN 7891150102354: 'Mascara de Tratamento Dove Cachos Ativos + Biotina 500g' — R$ 35.18
+2026-06-19 18:00:51,823 - INFO - ✅ EAN 7896311707843: 'Therma Pro Hardcore Integralmedica Termogenico 120 Cápsulas' — R$ 80.26
+2026-06-19 18:00:52,487 - WARNING - ⚠️ Skipped — EAN 7898662451277: not found (empty result_list).
+2026-06-19 18:00:53,274 - INFO - ✅ EAN 7891182016278: 'Tintura Wella Koleston nº 50 castanho claro' — R$ 29.30
+2026-06-19 18:00:53,713 - WARNING - ⚠️ Skipped — EAN 7908512700568: not found (empty result_list).
+2026-06-19 18:00:54,787 - INFO - ✅ EAN 7896006222620: 'Octifen 0,25mg/mL, frasco com 5mL de solução de uso oftálmico' — R$ 34.69
+2026-06-19 18:00:56,527 - INFO - ✅ EAN 7891000062760: 'Fórmula Infantil Nestlé Nestogeno 2 de 6 à 12 Meses 800g' — R$ 58.99
+2026-06-19 18:00:56,833 - WARNING - ⚠️ Skipped — EAN 7891155020257: not found (empty result_list).
+2026-06-19 18:00:58,451 - INFO - ✅ EAN 7898029550827: 'Triplixam 10mg + 2,5mg + 5mg, 30 comprimidos revestidos' — R$ 115.81
+2026-06-19 18:00:58,594 - WARNING - ⚠️ Skipped — EAN 7896025523708: not found (empty result_list).
+2026-06-19 18:00:59,092 - WARNING - ⚠️ Skipped — EAN 7898647923799: not found (empty result_list).
+2026-06-19 18:00:59,219 - WARNING - ⚠️ Skipped — EAN 6973094272001: not found (empty result_list).
+2026-06-19 18:00:59,338 - WARNING - ⚠️ Skipped — EAN 7891268103175: not found (empty result_list).
+2026-06-19 18:00:59,444 - WARNING - ⚠️ Skipped — EAN 7908083512089: not found (empty result_list).
+2026-06-19 18:01:00,594 - INFO - ✅ EAN 7898958060039: 'Lixa para Pés Bellesa madeira, média, reta com 1 unidade' — R$ 12.24
+2026-06-19 18:01:00,731 - WARNING - ⚠️ Skipped — EAN 7898664970844: not found (empty result_list).
+2026-06-19 18:01:00,860 - WARNING - ⚠️ Skipped — EAN 7891360677239: not found (empty result_list).
+2026-06-19 18:01:00,959 - WARNING - ⚠️ Skipped — EAN 7896033203340: not found (empty result_list).
+2026-06-19 18:01:01,090 - WARNING - ⚠️ Skipped — EAN 7898095296018: not found (empty result_list).
+2026-06-19 18:01:01,820 - WARNING - ⚠️ Skipped — EAN 7896181927297: not found (empty result_list).
+2026-06-19 18:01:01,927 - WARNING - ⚠️ Skipped — EAN 7891027338985: not found (empty result_list).
+2026-06-19 18:01:02,059 - WARNING - ⚠️ Skipped — EAN 6973094271417: not found (empty result_list).
+2026-06-19 18:01:02,190 - WARNING - ⚠️ Skipped — EAN 7891000399590: not found (empty result_list).
+2026-06-19 18:01:03,600 - INFO - ✅ EAN 7891035911729: 'Repelente Super Repelex loção 200mL' — R$ 19.50
+2026-06-19 18:01:03,740 - WARNING - ⚠️ Skipped — EAN 7897517902902: not found (empty result_list).
+2026-06-19 18:01:03,901 - WARNING - ⚠️ Skipped — EAN 7909107543058: not found (empty result_list).
+2026-06-19 18:01:04,025 - WARNING - ⚠️ Skipped — EAN 7896484110365: not found (empty result_list).
+2026-06-19 18:01:04,153 - WARNING - ⚠️ Skipped — EAN 7897237311558: not found (empty result_list).
+2026-06-19 18:01:04,914 - INFO - ✅ EAN 7892828001580: 'Tríade Mulher 30 cápsulas' — R$ 51.41
+2026-06-19 18:01:05,102 - WARNING - ⚠️ Skipped — EAN 7897027210276: not found (empty result_list).
+2026-06-19 18:01:06,392 - INFO - ✅ EAN 7893454714882: 'Culturelle Probiótico Bebê Gotas (6mL)' — R$ 133.18
+2026-06-19 18:01:07,657 - INFO - ✅ EAN 7896012877722: 'Shampoo Pompom Camomila 200ml' — R$ 13.71
+2026-06-19 18:01:08,067 - WARNING - ⚠️ Skipped — EAN 7898944075276: not found (empty result_list).
+2026-06-19 18:01:08,228 - WARNING - ⚠️ Skipped — EAN 7896183313739: not found (empty result_list).
+2026-06-19 18:01:08,354 - WARNING - ⚠️ Skipped — EAN 7908040492256: not found (empty result_list).
+2026-06-19 18:01:09,574 - INFO - ✅ EAN 7893454714479: 'Tanderalgin 125mg + 50mg + 300mg + 30mg, 15 comprimidos' — R$ 21.75
+2026-06-19 18:01:09,696 - WARNING - ⚠️ Skipped — EAN 17891321320065: not found (empty result_list).
+2026-06-19 18:01:10,354 - INFO - ✅ EAN 7899706185769: 'Protetor Hidratante Facial Garnier Uniform & Matte Vitamina C FPS 50, média com 40g' — R$ 50.24
+2026-06-19 18:01:10,492 - WARNING - ⚠️ Skipped — EAN 7891360587460: not found (empty result_list).
+2026-06-19 18:01:11,748 - INFO - ✅ EAN 7898636190027: 'Água Micelar Cicatricure 200mL' — R$ 26.45
+2026-06-19 18:01:11,857 - WARNING - ⚠️ Skipped — EAN 7898170657000: not found (empty result_list).
+2026-06-19 18:01:11,968 - WARNING - ⚠️ Skipped — EAN 7891150031746: not found (empty result_list).
+2026-06-19 18:01:12,094 - WARNING - ⚠️ Skipped — EAN 7897027272038: not found (empty result_list).
+2026-06-19 18:01:12,211 - WARNING - ⚠️ Skipped — EAN 7898588321685: not found (empty result_list).
+2026-06-19 18:01:12,375 - WARNING - ⚠️ Skipped — EAN 7898647924260: not found (empty result_list).
+2026-06-19 18:01:12,500 - WARNING - ⚠️ Skipped — EAN 7891027359393: not found (empty result_list).
+2026-06-19 18:01:12,636 - WARNING - ⚠️ Skipped — EAN 7897027240747: not found (empty result_list).
+2026-06-19 18:01:14,168 - INFO - ✅ EAN 7896671630034: 'Condicionador Flores & Vegetais Camomila e Hamamélis Iluminador 300mL' — R$ 36.25
+2026-06-19 18:01:14,994 - INFO - ✅ EAN 7896004731674: 'Expectamin Maleato de Dexclorfeniramina 0,4mg/ml + Sulfato de Pseudoefedrina 4mg/ml + Guaifenesina 20mg/ml Solução Oral 120ml' — R$ 29.98
+2026-06-19 18:01:15,129 - WARNING - ⚠️ Skipped — EAN 7896180300718: not found (empty result_list).
+2026-06-19 18:01:15,831 - INFO - ✅ EAN 7908615031514: 'Protetor Solar Facial Antioxidante FPS 80 1.0 La Roche-Posay Anthelios' — R$ 111.33
+2026-06-19 18:01:15,958 - WARNING - ⚠️ Skipped — EAN 7897833700206: not found (empty result_list).
+2026-06-19 18:01:16,090 - WARNING - ⚠️ Skipped — EAN 7891033793778: not found (empty result_list).
+2026-06-19 18:01:17,160 - INFO - ✅ EAN 7891033016419: 'Shampoo Eudora Siàge Hair-plastia 250mL' — R$ 58.70
+2026-06-19 18:01:17,266 - WARNING - ⚠️ Skipped — EAN 7908209805798: not found (empty result_list).
+2026-06-19 18:01:17,425 - WARNING - ⚠️ Skipped — EAN 7897517917586: not found (empty result_list).
+2026-06-19 18:01:18,530 - INFO - ✅ EAN 7896523216812: 'Dia D 1,5mg com 1 Comprimido' — R$ 14.60
+2026-06-19 18:01:18,678 - WARNING - ⚠️ Skipped — EAN 7899360264244: not found (empty result_list).
+2026-06-19 18:01:18,840 - WARNING - ⚠️ Skipped — EAN 7898662436731: not found (empty result_list).
+2026-06-19 18:01:18,957 - WARNING - ⚠️ Skipped — EAN 17896914011214: not found (empty result_list).
+2026-06-19 18:01:19,178 - WARNING - ⚠️ Skipped — EAN 7898758083610: not found (empty result_list).
+2026-06-19 18:01:20,555 - INFO - ✅ EAN 7891033935048: 'Eudora Perfume Intention (100mL)' — R$ 166.50
+2026-06-19 18:01:20,677 - WARNING - ⚠️ Skipped — EAN 7909438011318: not found (empty result_list).
+2026-06-19 18:01:20,802 - WARNING - ⚠️ Skipped — EAN 7908470026090: not found (empty result_list).
+2026-06-19 18:01:20,918 - WARNING - ⚠️ Skipped — EAN 7896637035453: not found (empty result_list).
+2026-06-19 18:01:21,028 - WARNING - ⚠️ Skipped — EAN 7891800332629: not found (empty result_list).
+2026-06-19 18:01:22,123 - INFO - ✅ EAN 7896187800501: 'Abaixador de Língua Theoto madeira com 100 unidades' — R$ 12.41
+2026-06-19 18:01:22,288 - WARNING - ⚠️ Skipped — EAN 7898426278843: not found (empty result_list).
+2026-06-19 18:01:22,388 - WARNING - ⚠️ Skipped — EAN 7898556752954: not found (empty result_list).
+2026-06-19 18:01:22,566 - WARNING - ⚠️ Skipped — EAN 7892692812541: not found (empty result_list).
+2026-06-19 18:01:23,935 - INFO - ✅ EAN 7898009437353: 'Salon Line Guanidina Tradicional Mild Força Suave 215g' — R$ 35.18
+2026-06-19 18:01:24,052 - WARNING - ⚠️ Skipped — EAN 7896111913833: not found (empty result_list).
+2026-06-19 18:01:24,196 - WARNING - ⚠️ Skipped — EAN 7898741951506: not found (empty result_list).
+2026-06-19 18:01:25,403 - INFO - ✅ EAN 7896004779096: 'Glamigan RC 0,1mg/mL, frasco gotejador com 3mL de solução de uso oftálmico' — R$ 98.61
+2026-06-19 18:01:25,518 - WARNING - ⚠️ Skipped — EAN 7891055633908: not found (empty result_list).
+2026-06-19 18:01:26,680 - INFO - ✅ EAN 7891721020247: 'Levotiroxina Sódica Merck 200mcg, 30 comprimidos' — R$ 27.18
+2026-06-19 18:01:26,806 - WARNING - ⚠️ Skipped — EAN 7896317906165: not found (empty result_list).
+2026-06-19 18:01:26,919 - WARNING - ⚠️ Skipped — EAN 7898132980672: not found (empty result_list).
+2026-06-19 18:01:27,038 - WARNING - ⚠️ Skipped — EAN 6202103510026: not found (empty result_list).
+2026-06-19 18:01:27,136 - WARNING - ⚠️ Skipped — EAN 1738: not found (empty result_list).
+2026-06-19 18:01:27,256 - WARNING - ⚠️ Skipped — EAN 7891027105501: not found (empty result_list).
+2026-06-19 18:01:27,379 - WARNING - ⚠️ Skipped — EAN 7908458320424: not found (empty result_list).
+2026-06-19 18:01:27,487 - WARNING - ⚠️ Skipped — EAN 7908346900127: not found (empty result_list).
+2026-06-19 18:01:27,592 - WARNING - ⚠️ Skipped — EAN 7899783602173: not found (empty result_list).
+2026-06-19 18:01:27,711 - WARNING - ⚠️ Skipped — EAN 7899583203204: not found (empty result_list).
+2026-06-19 18:01:27,830 - WARNING - ⚠️ Skipped — EAN 7891106908498: not found (empty result_list).
+2026-06-19 18:01:27,949 - WARNING - ⚠️ Skipped — EAN 7896004701943: not found (empty result_list).
+2026-06-19 18:01:29,260 - INFO - ✅ EAN 7891010253929: 'Hidratante Corporal Neutrogena Body Care Intensive Hidrata e Suaviza 200mL' — R$ 27.82
+2026-06-19 18:01:30,448 - INFO - ✅ EAN 7899706244060: 'Condicionador Reidratante Elseve Pure Hialurônico 400mL' — R$ 39.54
+2026-06-19 18:01:31,673 - INFO - ✅ EAN 7898148293834: 'Cloridrato de Ambroxol Prati-Donaduzzi 3mg/mL, caixa com 1 frasco com 120mL de xarope infantil + copo medidor' — R$ 12.62
+2026-06-19 18:01:31,790 - WARNING - ⚠️ Skipped — EAN 7896092002106: not found (empty result_list).
+2026-06-19 18:01:32,372 - WARNING - ⚠️ Skipped — EAN 7897832888585: not found (empty result_list).
+2026-06-19 18:01:32,543 - WARNING - ⚠️ Skipped — EAN 7896004746388: not found (empty result_list).
+2026-06-19 18:01:32,648 - WARNING - ⚠️ Skipped — EAN 7898650621712: not found (empty result_list).
+2026-06-19 18:01:32,754 - WARNING - ⚠️ Skipped — EAN 7891317020538: not found (empty result_list).
+2026-06-19 18:01:34,174 - INFO - ✅ EAN 7891463000859: 'Seringa BD Luer Slip com agulha capacidade de 1mL' — R$ 2.93
+2026-06-19 18:01:34,288 - WARNING - ⚠️ Skipped — EAN 7898970341505: not found (empty result_list).
+2026-06-19 18:01:34,419 - WARNING - ⚠️ Skipped — EAN 7896013557456: not found (empty result_list).
+2026-06-19 18:01:34,585 - WARNING - ⚠️ Skipped — EAN 7895296105040: not found (empty result_list).
+2026-06-19 18:01:34,712 - WARNING - ⚠️ Skipped — EAN 7891360653813: not found (empty result_list).
+2026-06-19 18:01:35,614 - INFO - ✅ EAN 3282770148800: 'Gel para Limpeza Facial Avène Cleanance 150mL' — R$ 72.50
+2026-06-19 18:01:35,718 - WARNING - ⚠️ Skipped — EAN 7898608950918: not found (empty result_list).
+2026-06-19 18:01:35,831 - WARNING - ⚠️ Skipped — EAN 7898212286670: not found (empty result_list).
+2026-06-19 18:01:37,013 - INFO - ✅ EAN 7891010607135: 'Absorvente Sempre Livre Adapt Plus Conforto Noturno com abas, suave, pacote com 16 unidades' — R$ 20.29
+2026-06-19 18:01:37,136 - WARNING - ⚠️ Skipped — EAN 7896235353850: not found (empty result_list).
+2026-06-19 18:01:38,504 - INFO - ✅ EAN 7908615062433: 'TINTURA COR&TON  0% AMONIA 5.0 CASTANHO CLARO' — R$ 23.42
+2026-06-19 18:01:40,061 - INFO - ✅ EAN 7896094920255: 'Colflex Trio Mantecorp sem sabor, 30 sachês com 12g de pó para solução de uso oral' — R$ 259.78
+2026-06-19 18:01:40,197 - WARNING - ⚠️ Skipped — EAN 7896342400904: not found (empty result_list).
+2026-06-19 18:01:40,331 - WARNING - ⚠️ Skipped — EAN 7891000142202: not found (empty result_list).
+2026-06-19 18:01:42,035 - INFO - ✅ EAN 7895858015695: 'Leite de Magnésia de Phillips 1282,50mg/15mL, frasco com 350mL de suspensão de uso oral (sabor tradicional)' — R$ 30.28
+2026-06-19 18:01:42,164 - WARNING - ⚠️ Skipped — EAN 7898770683164: not found (empty result_list).
+2026-06-19 18:01:42,284 - WARNING - ⚠️ Skipped — EAN 7898301059017: not found (empty result_list).
+2026-06-19 18:01:42,399 - WARNING - ⚠️ Skipped — EAN 7898943477965: not found (empty result_list).
+2026-06-19 18:01:42,566 - WARNING - ⚠️ Skipped — EAN 37908215502101: not found (empty result_list).
+2026-06-19 18:01:42,675 - WARNING - ⚠️ Skipped — EAN 7898610370506: not found (empty result_list).
+2026-06-19 18:01:43,351 - INFO - ✅ EAN 8429420225718: 'Fotoprotetor Isdin Fusion Water FPS 60 com 30mL' — R$ 90.05
+2026-06-19 18:01:43,478 - WARNING - ⚠️ Skipped — EAN 7896020164166: not found (empty result_list).
+2026-06-19 18:01:43,597 - WARNING - ⚠️ Skipped — EAN 7896311773282: not found (empty result_list).
+2026-06-19 18:01:43,716 - WARNING - ⚠️ Skipped — EAN 731509974645: not found (empty result_list).
+2026-06-19 18:01:43,838 - WARNING - ⚠️ Skipped — EAN 7891027070106: not found (empty result_list).
+2026-06-19 18:01:43,948 - WARNING - ⚠️ Skipped — EAN 7908458305384: not found (empty result_list).
+2026-06-19 18:01:45,254 - INFO - ✅ EAN 7896902205147: 'Protetor Solar Facial Sunless FPS 50 60g' — R$ 36.31
+2026-06-19 18:01:45,357 - WARNING - ⚠️ Skipped — EAN 7896114312879: not found (empty result_list).
+2026-06-19 18:01:45,465 - WARNING - ⚠️ Skipped — EAN 7896023779459: not found (empty result_list).
+2026-06-19 18:01:45,597 - WARNING - ⚠️ Skipped — EAN 7896497503956: not found (empty result_list).
+2026-06-19 18:01:46,609 - INFO - ✅ EAN 7896015529086: 'Anoro Ellipta 62,5mcg/dose + 25mcg/dose, 30 doses de pó inalatório de uso oral' — R$ 378.10
+2026-06-19 18:01:46,748 - WARNING - ⚠️ Skipped — EAN 7896509911823: not found (empty result_list).
+2026-06-19 18:01:47,056 - WARNING - ⚠️ Skipped — EAN 7896964627468: not found (empty result_list).
+2026-06-19 18:01:47,162 - WARNING - ⚠️ Skipped — EAN 7894494695896: not found (empty result_list).
+2026-06-19 18:01:47,350 - WARNING - ⚠️ Skipped — EAN 7898126407796: not found (empty result_list).
+2026-06-19 18:01:47,446 - WARNING - ⚠️ Skipped — EAN 7898148298037: not found (empty result_list).
+2026-06-19 18:01:47,562 - WARNING - ⚠️ Skipped — EAN 7908169010591: not found (empty result_list).
+2026-06-19 18:01:47,672 - WARNING - ⚠️ Skipped — EAN 7898608958778: not found (empty result_list).
+2026-06-19 18:01:47,794 - WARNING - ⚠️ Skipped — EAN 7891027047771: not found (empty result_list).
+2026-06-19 18:01:48,662 - INFO - ✅ EAN 7899674027467: 'Desodorante Antitranspirante Aerosol Above Men Vulcan 48h 150ml' — R$ 11.26
+2026-06-19 18:01:48,766 - WARNING - ⚠️ Skipped — EAN 7898741530404: not found (empty result_list).
+2026-06-19 18:01:50,336 - INFO - ✅ EAN 7891268102208: 'Dostinex 0,5mg, 2 comprimidos' — R$ 135.39
+2026-06-19 18:01:50,523 - WARNING - ⚠️ Skipped — EAN 7898671422633: not found (empty result_list).
+2026-06-19 18:01:50,762 - WARNING - ⚠️ Skipped — EAN 7898610375334: not found (empty result_list).
+2026-06-19 18:01:50,895 - WARNING - ⚠️ Skipped — EAN 7908439801416: not found (empty result_list).
+2026-06-19 18:01:51,208 - WARNING - ⚠️ Skipped — EAN 7896004700410: not found (empty result_list).
+2026-06-19 18:01:51,329 - WARNING - ⚠️ Skipped — EAN 7897256296386: not found (empty result_list).
+2026-06-19 18:01:52,784 - INFO - ✅ EAN 7891045008433: 'Nordette 0,15mg + 0,03mg, 21 drágeas' — R$ 12.55
+2026-06-19 18:01:52,894 - WARNING - ⚠️ Skipped — EAN 7898944500303: not found (empty result_list).
+2026-06-19 18:01:53,110 - WARNING - ⚠️ Skipped — EAN 7908083521036: not found (empty result_list).
+2026-06-19 18:01:53,259 - WARNING - ⚠️ Skipped — EAN 7891317014155: not found (empty result_list).
+2026-06-19 18:01:53,400 - WARNING - ⚠️ Skipped — EAN 7908376801241: not found (empty result_list).
+2026-06-19 18:01:53,505 - WARNING - ⚠️ Skipped — EAN 7898949256045: not found (empty result_list).
+2026-06-19 18:01:53,650 - WARNING - ⚠️ Skipped — EAN 7897027223177: not found (empty result_list).
+2026-06-19 18:01:54,872 - INFO - ✅ EAN 7891000393284: 'Leite em Pó Ninho Integral Instantâneo Lata 380g' — R$ 24.08
+2026-06-19 18:01:56,055 - INFO - ✅ EAN 4005900521897: 'Sabonete Hidratante Nivea aveia, barra 85g' — R$ 3.91
+2026-06-19 18:01:56,166 - WARNING - ⚠️ Skipped — EAN 7898411813127: not found (empty result_list).
+2026-06-19 18:01:56,288 - WARNING - ⚠️ Skipped — EAN 7897169236868: not found (empty result_list).
+2026-06-19 18:01:57,001 - INFO - ✅ EAN 7896877602910: 'Fralda Toquinho de Gente Premium EG, pacote com 64 unidades' — R$ 69.74
+2026-06-19 18:01:57,178 - WARNING - ⚠️ Skipped — EAN 7896094903234: not found (empty result_list).
+2026-06-19 18:01:57,360 - WARNING - ⚠️ Skipped — EAN 7898608952943: not found (empty result_list).
+2026-06-19 18:01:57,507 - WARNING - ⚠️ Skipped — EAN 7897230303680: not found (empty result_list).
+2026-06-19 18:01:57,641 - WARNING - ⚠️ Skipped — EAN 7896006297963: not found (empty result_list).
+2026-06-19 18:01:57,772 - WARNING - ⚠️ Skipped — EAN 7896036548127: not found (empty result_list).
+2026-06-19 18:01:57,900 - WARNING - ⚠️ Skipped — EAN 7908324400861: not found (empty result_list).
+2026-06-19 18:01:58,233 - WARNING - ⚠️ Skipped — EAN 7898567750260: not found (empty result_list).
+2026-06-19 18:01:59,592 - INFO - ✅ EAN 7899824400737: 'Folifer 150mg + 5mg, 30 comprimidos revestidos' — R$ 79.82
+2026-06-19 18:01:59,708 - WARNING - ⚠️ Skipped — EAN 7894970851204: not found (empty result_list).
+2026-06-19 18:01:59,831 - WARNING - ⚠️ Skipped — EAN 731509990508: not found (empty result_list).
+2026-06-19 18:01:59,954 - WARNING - ⚠️ Skipped — EAN 7898405065471: not found (empty result_list).
+2026-06-19 18:02:01,466 - INFO - ✅ EAN 7897322704944: 'Rinosoro SIC 30mg/mL, frasco spray com 50mL de solução de uso nasal' — R$ 31.21
+2026-06-19 18:02:01,587 - WARNING - ⚠️ Skipped — EAN 7898664970554: not found (empty result_list).
+2026-06-19 18:02:01,711 - WARNING - ⚠️ Skipped — EAN 7898949409564: not found (empty result_list).
+2026-06-19 18:02:01,834 - WARNING - ⚠️ Skipped — EAN 7898741530534: not found (empty result_list).
+2026-06-19 18:02:01,979 - WARNING - ⚠️ Skipped — EAN 7891040216130: not found (empty result_list).
+2026-06-19 18:02:02,108 - WARNING - ⚠️ Skipped — EAN 6931759249102: not found (empty result_list).
+2026-06-19 18:02:02,230 - WARNING - ⚠️ Skipped — EAN 7908134200071: not found (empty result_list).
+2026-06-19 18:02:02,384 - WARNING - ⚠️ Skipped — EAN 7899420506772: not found (empty result_list).
+2026-06-19 18:02:02,503 - WARNING - ⚠️ Skipped — EAN 7899360264411: not found (empty result_list).
+2026-06-19 18:02:02,652 - WARNING - ⚠️ Skipped — EAN 7898410315035: not found (empty result_list).
+2026-06-19 18:02:02,801 - WARNING - ⚠️ Skipped — EAN 7898944500631: not found (empty result_list).
+2026-06-19 18:02:03,490 - INFO - ✅ EAN 8710103881278: 'Bico de Mamadeira Avent 6+ Meses, Fluxo Rápido, 2 Unidades' — R$ 59.68
+2026-06-19 18:02:04,607 - INFO - ✅ EAN 7891055688724: 'Escova de Cabelo Condor Joy desembaraça, ref.6887' — R$ 15.58
+2026-06-19 18:02:04,807 - WARNING - ⚠️ Skipped — EAN 7898599217144: not found (empty result_list).
+2026-06-19 18:02:04,940 - WARNING - ⚠️ Skipped — EAN 7891058005788: not found (empty result_list).
+2026-06-19 18:02:06,050 - INFO - ✅ EAN 7891317032319: 'Rehidrat frasco com 625mL de solução de uso oral, sabor uva' — R$ 12.64
+2026-06-19 18:02:06,156 - WARNING - ⚠️ Skipped — EAN 7897424080335: not found (empty result_list).
+2026-06-19 18:02:06,755 - INFO - ✅ EAN 7898562352162: 'Balm Hidratante Labial Mia Teen Relógio Tic Tac Aromatizado' — R$ 15.02
+2026-06-19 18:02:06,877 - WARNING - ⚠️ Skipped — EAN 7896902286306: not found (empty result_list).
+2026-06-19 18:02:07,004 - WARNING - ⚠️ Skipped — EAN 7898405068663: not found (empty result_list).
+2026-06-19 18:02:08,246 - INFO - ✅ EAN 7898430192845: 'Dprev 1.000UI, 30 comprimidos revestidos' — R$ 40.58
+2026-06-19 18:02:08,378 - WARNING - ⚠️ Skipped — EAN 7896444606365: not found (empty result_list).
+2026-06-19 18:02:08,503 - WARNING - ⚠️ Skipped — EAN 7899869200828: not found (empty result_list).
+2026-06-19 18:02:08,612 - WARNING - ⚠️ Skipped — EAN 7897517918118: not found (empty result_list).
+2026-06-19 18:02:08,738 - WARNING - ⚠️ Skipped — EAN 17891321104214: not found (empty result_list).
+2026-06-19 18:02:08,891 - WARNING - ⚠️ Skipped — EAN 7891027069681: not found (empty result_list).
+2026-06-19 18:02:08,992 - WARNING - ⚠️ Skipped — EAN 7899706198332: not found (empty result_list).
+2026-06-19 18:02:09,123 - WARNING - ⚠️ Skipped — EAN 7899852019147: not found (empty result_list).
+2026-06-19 18:02:09,771 - INFO - ✅ EAN 7898610373040: 'Polpa em Creme Haskell Murumuru 150g' — R$ 53.17
+2026-06-19 18:02:10,511 - INFO - ✅ EAN 7509546664774: 'Spray Antisséptico Bucal Colgate Total 12 Clean Mint 60mL' — R$ 18.02
+2026-06-19 18:02:10,670 - WARNING - ⚠️ Skipped — EAN 7896714280707: not found (empty result_list).
+2026-06-19 18:02:10,815 - WARNING - ⚠️ Skipped — EAN 7898086992080: not found (empty result_list).
+2026-06-19 18:02:10,981 - WARNING - ⚠️ Skipped — EAN 7891150060722: not found (empty result_list).
+2026-06-19 18:02:11,106 - WARNING - ⚠️ Skipped — EAN 7896013543657: not found (empty result_list).
+2026-06-19 18:02:11,244 - WARNING - ⚠️ Skipped — EAN 6920898818164: not found (empty result_list).
+2026-06-19 18:02:12,216 - INFO - ✅ EAN 7896902210325: 'Sabonete Íntimo Hidraderm neutro, líquido, 200mL' — R$ 15.18
+2026-06-19 18:02:12,383 - WARNING - ⚠️ Skipped — EAN 7898474844205: not found (empty result_list).
+2026-06-19 18:02:13,159 - INFO - ✅ EAN 7896111999806: 'Esmalte Perolado Impala Cor da Moda Segredos 7,5ml' — R$ 5.78
+2026-06-19 18:02:13,405 - WARNING - ⚠️ Skipped — EAN 7896111904527: not found (empty result_list).
+2026-06-19 18:02:13,540 - WARNING - ⚠️ Skipped — EAN 7892680335069: not found (empty result_list).
+2026-06-19 18:02:13,661 - WARNING - ⚠️ Skipped — EAN 6932159601767: not found (empty result_list).
+2026-06-19 18:02:15,015 - INFO - ✅ EAN 4005900294722: 'SAB.NIVEA 90G LUXO CREME CARE' — R$ 3.53
+2026-06-19 18:02:15,145 - WARNING - ⚠️ Skipped — EAN 736532021939: not found (empty result_list).
+2026-06-19 18:02:15,255 - WARNING - ⚠️ Skipped — EAN 9788538097785: not found (empty result_list).
+2026-06-19 18:02:16,027 - INFO - ✅ EAN 7899026401723: 'Esmalte Base Setim Coloroma Tratamento 8mL' — R$ 7.83
+2026-06-19 18:02:17,554 - INFO - ✅ EAN 7896004770895: 'Allexofedrin 6mg/mL, frasco com 60mL de suspensão de uso oral sabor framboesa + seringa dosadora, pediátrico' — R$ 42.49
+2026-06-19 18:02:17,674 - WARNING - ⚠️ Skipped — EAN 8903908000016: not found (empty result_list).
+2026-06-19 18:02:18,390 - INFO - ✅ EAN 7896010174052: 'Máscara de Hidratação Intensiva Salon Opus Violet 400g' — R$ 35.37
+2026-06-19 18:02:18,485 - WARNING - ⚠️ Skipped — EAN 7891200009091: not found (empty result_list).
+2026-06-19 18:02:18,647 - WARNING - ⚠️ Skipped — EAN 7894222010809: not found (empty result_list).
+2026-06-19 18:02:18,771 - WARNING - ⚠️ Skipped — EAN 7896042082745: not found (empty result_list).
+2026-06-19 18:02:18,889 - WARNING - ⚠️ Skipped — EAN 7898212280470: not found (empty result_list).
+2026-06-19 18:02:19,007 - WARNING - ⚠️ Skipped — EAN 6903612145111: not found (empty result_list).
+2026-06-19 18:02:19,130 - WARNING - ⚠️ Skipped — EAN 7898949149699: not found (empty result_list).
+2026-06-19 18:02:19,242 - WARNING - ⚠️ Skipped — EAN 6931759214070: not found (empty result_list).
+2026-06-19 18:02:19,919 - INFO - ✅ EAN 7891150101616: 'Shampoo Seda Toque De Seda 300mL' — R$ 13.71
+2026-06-19 18:02:20,029 - WARNING - ⚠️ Skipped — EAN 7897476606330: not found (empty result_list).
+2026-06-19 18:02:21,196 - INFO - ✅ EAN 7500435106610: 'Fralda Pampers Confort Sec P, pacote com 50 unidades' — R$ 74.39
+2026-06-19 18:02:21,360 - WARNING - ⚠️ Skipped — EAN 7896115703577: not found (empty result_list).
+2026-06-19 18:02:21,489 - WARNING - ⚠️ Skipped — EAN 7898666420378: not found (empty result_list).
+2026-06-19 18:02:21,630 - WARNING - ⚠️ Skipped — EAN 7896965214742: not found (empty result_list).
+2026-06-19 18:02:21,740 - WARNING - ⚠️ Skipped — EAN 7896111945001: not found (empty result_list).
+2026-06-19 18:02:22,886 - INFO - ✅ EAN 7891150102590: 'Condicionador Dove Bond Repair + Peptídeo 600ml Pump' — R$ 48.57
+2026-06-19 18:02:23,030 - WARNING - ⚠️ Skipped — EAN 7896676435580: not found (empty result_list).
+2026-06-19 18:02:23,158 - WARNING - ⚠️ Skipped — EAN 7896111991473: not found (empty result_list).
+2026-06-19 18:02:23,279 - WARNING - ⚠️ Skipped — EAN 7896033212335: not found (empty result_list).
+2026-06-19 18:02:23,523 - WARNING - ⚠️ Skipped — EAN 7622210527837: not found (empty result_list).
+2026-06-19 18:02:23,651 - WARNING - ⚠️ Skipped — EAN 7896075760443: not found (empty result_list).
+2026-06-19 18:02:25,244 - INFO - ✅ EAN 7891150102767: 'Condicionador Dove UV Repair & Glow + Ferúlico 600ml' — R$ 48.57
+2026-06-19 18:02:25,353 - WARNING - ⚠️ Skipped — EAN 39325365: not found (empty result_list).
+2026-06-19 18:02:25,506 - WARNING - ⚠️ Skipped — EAN 7896226105192: not found (empty result_list).
+2026-06-19 18:02:25,651 - WARNING - ⚠️ Skipped — EAN 7892953001288: not found (empty result_list).
+2026-06-19 18:02:25,810 - WARNING - ⚠️ Skipped — EAN 7908458327898: not found (empty result_list).
+2026-06-19 18:02:26,953 - INFO - ✅ EAN 8934868194378: 'Sabonete Líquido Dove Sérum Skin Firming 547mL' — R$ 46.94
+2026-06-19 18:02:27,132 - WARNING - ⚠️ Skipped — EAN 7898632473339: not found (empty result_list).
+2026-06-19 18:02:28,231 - INFO - ✅ EAN 7896026305259: 'Trayenta 5mg, 30 comprimidos revestidos' — R$ 295.84
+2026-06-19 18:02:28,430 - WARNING - ⚠️ Skipped — EAN 7891350036718: not found (empty result_list).
+2026-06-19 18:02:28,570 - WARNING - ⚠️ Skipped — EAN 7897780207650: not found (empty result_list).
+2026-06-19 18:02:29,731 - INFO - ✅ EAN 7894916206419: 'Micropil R21 0,075 + 0,020mg, 21 comprimidos revestidos' — R$ 39.56
+2026-06-19 18:02:29,856 - WARNING - ⚠️ Skipped — EAN 7908334505174: not found (empty result_list).
+2026-06-19 18:02:29,993 - WARNING - ⚠️ Skipped — EAN 7891150043237: not found (empty result_list).
+2026-06-19 18:02:30,129 - WARNING - ⚠️ Skipped — EAN 7898617524322: not found (empty result_list).
+2026-06-19 18:02:30,248 - WARNING - ⚠️ Skipped — EAN 7891106906012: not found (empty result_list).
+2026-06-19 18:02:30,368 - WARNING - ⚠️ Skipped — EAN 7898286940584: not found (empty result_list).
+2026-06-19 18:02:30,487 - WARNING - ⚠️ Skipped — EAN 7891027234560: not found (empty result_list).
+2026-06-19 18:02:30,593 - WARNING - ⚠️ Skipped — EAN 7899583203716: not found (empty result_list).
+2026-06-19 18:02:30,718 - WARNING - ⚠️ Skipped — EAN 7500435128940: not found (empty result_list).
+2026-06-19 18:02:31,844 - INFO - ✅ EAN 78939301: 'Bombom Lacta Sonho de Valsa 20g' — R$ 2.44
+2026-06-19 18:02:31,910 - WARNING - Request failed for https://www.drogaven.com.br/busca/suggest/?query_term=0070341336588: Expecting value: line 1 column 1 (char 0)
+2026-06-19 18:02:34,772 - WARNING - Request failed for https://www.drogaven.com.br/busca/suggest/?query_term=0070341336588: Expecting value: line 1 column 1 (char 0)
+2026-06-19 18:02:36,229 - WARNING - Request failed for https://www.drogaven.com.br/busca/suggest/?query_term=0070341336588: Expecting value: line 1 column 1 (char 0)
+2026-06-19 18:02:38,180 - WARNING - ⚠️ Skipped — EAN 0070341336588: not found (empty result_list).
+2026-06-19 18:02:38,293 - WARNING - ⚠️ Skipped — EAN 7896025528345: not found (empty result_list).
+2026-06-19 18:02:38,420 - WARNING - ⚠️ Skipped — EAN 7909189317912: not found (empty result_list).
+2026-06-19 18:02:39,744 - INFO - ✅ EAN 7898632474725: 'Kit Labotrat Esfoliante 150g + Hidratante 190g Morango' — R$ 43.02
+2026-06-19 18:02:39,875 - WARNING - ⚠️ Skipped — EAN 7790085472276: not found (empty result_list).
+2026-06-19 18:02:39,988 - WARNING - ⚠️ Skipped — EAN 7898352911555: not found (empty result_list).
+2026-06-19 18:02:41,350 - INFO - ✅ EAN 7892953001387: 'Pyridium 200mg, 18 Drágeas' — R$ 27.43
+2026-06-19 18:02:41,976 - INFO - ✅ EAN 7896331703832: 'Enxaguante Bucal Periotrat Menta Tradicional 250ml' — R$ 24.40
+2026-06-19 18:02:43,555 - INFO - ✅ EAN 4005900662019: 'Água Micelar Nivea 7 em 1 Efeito Matte 200mL' — R$ 24.40
+2026-06-19 18:02:43,893 - WARNING - ⚠️ Skipped — EAN 7896382708183: not found (empty result_list).
+2026-06-19 18:02:44,096 - WARNING - ⚠️ Skipped — EAN 7898265325173: not found (empty result_list).
+2026-06-19 18:02:44,208 - WARNING - ⚠️ Skipped — EAN 7897027201229: not found (empty result_list).
+2026-06-19 18:02:44,375 - WARNING - ⚠️ Skipped — EAN 7896033233934: not found (empty result_list).
+2026-06-19 18:02:44,380 - INFO - Dados salvos em JSON: C:\Users\Usuario\Desktop\drogacentroo\output\Scrape_Drogaven_2026-06-19.json
+2026-06-19 18:02:44,397 - INFO - Dados salvos em CSV: C:\Users\Usuario\Desktop\drogacentroo\output\Scrape_Drogaven_2026-06-19.csv.
+2026-06-19 18:02:44,552 - INFO - Dados salvos em Excel: C:\Users\Usuario\Desktop\drogacentroo\output\Scrape_Drogaven_2026-06-19.xlsx.
+2026-06-19 18:02:44,553 - INFO - 390 EANs com falha exportados para: C:\Users\Usuario\Desktop\drogacentroo\output\errors\Errors_Drogaven_2026-06-19.txt
+2026-06-19 18:02:44,553 - INFO - --- Drogaven Finish ---
+2026-06-19 18:02:44,553 - INFO - Tempo total: 210.58 segundos
+2026-06-19 18:02:44,553 - INFO - Total de produtos com sucesso: 110
+2026-06-19 18:02:44,554 - INFO - Total de EANs com falha: 390
+2026-06-19 18:02:44,554 - INFO - Final count of blacklisted UAs: 12
