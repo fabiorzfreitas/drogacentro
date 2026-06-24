@@ -43,7 +43,7 @@ TEST_RUN = True
 SAMPLE_SIZE = 500  # Number of URLs to scrape if SCRAPE_ALL_URLS is False
 
 # Seletores CSS para extração de dados
-PRICE_SELECTOR = 'meta[property="product:price:amount"]'
+PRICE_SELECTOR = 'script[type="application/ld+json"]'
 NAME_SELECTOR = 'script[type="application/ld+json"]'
 EAN_SELECTOR = 'template[data-type="json"][data-varname="__STATE__"] > script'
 
@@ -131,17 +131,19 @@ def parse_product_page(html_content, url):
         product_data = {"url": url, "price": None, "ean": None, "name": None}
 
         # Extrai a tag para o preço
-        try:
-            price_tag = soup.select_one(PRICE_SELECTOR)
-            if price_tag:
-                content_val = price_tag.get("content")
-                product_data["price"] = float(content_val) if content_val else None
-            else:
-                logger.warning(
-                    f"Price tag not found (selector: {PRICE_SELECTOR}) for {url}"
-                )
-        except (AttributeError, ValueError, TypeError) as e:
-            logger.warning(f"Failed to parse price for {url}: {e}")
+        json_string = soup.select_one(PRICE_SELECTOR)
+        if json_string and json_string.string:
+            try:
+                json_ld_content = json.loads(json_string.string)
+                offers = json_ld_content.get("offers", {})
+                if isinstance(offers, dict):
+                    product_data["price"] = offers.get("lowPrice")
+                else:
+                    logger.warning(
+                        f"Price tag not found (selector: {PRICE_SELECTOR}) for {url}"
+                    )
+            except (AttributeError, ValueError, TypeError) as e:
+                logger.warning(f"Failed to parse price for {url}: {e}")
 
         # Extrai a tag para o nome
         json_string = soup.select_one(NAME_SELECTOR)

@@ -1,0 +1,38 @@
+2026-06-24 15:24:52,147 - INFO - --- Drogal Scraper Starting ---
+2026-06-24 15:24:52,147 - INFO - Iniciando teste com 500 URLs
+2026-06-24 15:24:52,147 - INFO - Extraindo sitemap base: https://www.drogal.com.br/sitemap.xml
+2026-06-24 15:24:54,816 - INFO - Baixando sitemap: https://www.drogal.com.br/sitemap/product-0.xml
+2026-06-24 15:24:57,338 - INFO - Baixando sitemap: https://www.drogal.com.br/sitemap/product-1.xml
+2026-06-24 15:24:59,986 - INFO - Baixando sitemap: https://www.drogal.com.br/sitemap/product-10.xml
+2026-06-24 15:25:02,258 - INFO - Baixando sitemap: https://www.drogal.com.br/sitemap/product-11.xml
+2026-06-24 15:25:04,913 - INFO - Baixando sitemap: https://www.drogal.com.br/sitemap/product-12.xml
+2026-06-24 15:25:07,558 - INFO - Baixando sitemap: https://www.drogal.com.br/sitemap/product-13.xml
+2026-06-24 15:25:10,192 - INFO - Baixando sitemap: https://www.drogal.com.br/sitemap/product-14.xml
+2026-06-24 15:25:12,505 - INFO - Baixando sitemap: https://www.drogal.com.br/sitemap/product-15.xml
+2026-06-24 15:25:14,844 - INFO - Baixando sitemap: https://www.drogal.com.br/sitemap/product-16.xml
+2026-06-24 15:25:17,161 - INFO - Baixando sitemap: https://www.drogal.com.br/sitemap/product-17.xml
+2026-06-24 15:25:19,640 - INFO - Baixando sitemap: https://www.drogal.com.br/sitemap/product-18.xml
+2026-06-24 15:25:22,508 - INFO - Baixando sitemap: https://www.drogal.com.br/sitemap/product-19.xml
+2026-06-24 15:25:24,890 - INFO - Baixando sitemap: https://www.drogal.com.br/sitemap/product-2.xml
+2026-06-24 15:25:27,207 - INFO - Baixando sitemap: https://www.drogal.com.br/sitemap/product-20.xml
+2026-06-24 15:25:29,513 - INFO - Baixando sitemap: https://www.drogal.com.br/sitemap/product-3.xml
+2026-06-24 15:25:31,862 - INFO - Baixando sitemap: https://www.drogal.com.br/sitemap/product-4.xml
+2026-06-24 15:25:34,204 - INFO - Baixando sitemap: https://www.drogal.com.br/sitemap/product-5.xml
+2026-06-24 15:25:36,566 - INFO - Baixando sitemap: https://www.drogal.com.br/sitemap/product-6.xml
+2026-06-24 15:25:38,835 - INFO - Baixando sitemap: https://www.drogal.com.br/sitemap/product-7.xml
+2026-06-24 15:25:42,125 - INFO - Baixando sitemap: https://www.drogal.com.br/sitemap/product-8.xml
+2026-06-24 15:25:44,433 - INFO - Baixando sitemap: https://www.drogal.com.br/sitemap/product-9.xml
+2026-06-24 15:25:47,129 - INFO - Encontradas 20661 URLs de produtos.
+2026-06-24 15:25:47,129 - INFO - Extraindo 500 URLs de produtos para teste...
+2026-06-24 15:26:00,469 - WARNING - Name selector not found or empty (selector: script[type="application/ld+json"]) for https://www.drogal.com.br/desodorante-intimo-higi-intima-suave-100ml/p
+2026-06-24 15:26:00,475 - WARNING - Product data has EAN/Name but invalid price: {'url': 'https://www.drogal.com.br/desodorante-intimo-higi-intima-suave-100ml/p', 'price': None, 'ean': '7899674008497', 'name': None} for https://www.drogal.com.br/desodorante-intimo-higi-intima-suave-100ml/p
+2026-06-24 15:26:05,092 - WARNING - Name selector not found or empty (selector: script[type="application/ld+json"]) for https://www.drogal.com.br/cloridrato-de-amiodarona-100mg-ranbaxy-30-comprimidos/p
+2026-06-24 15:26:05,093 - WARNING - Product data has EAN/Name but invalid price: {'url': 'https://www.drogal.com.br/cloridrato-de-amiodarona-100mg-ranbaxy-30-comprimidos/p', 'price': None, 'ean': '7897076911568', 'name': None} for https://www.drogal.com.br/cloridrato-de-amiodarona-100mg-ranbaxy-30-comprimidos/p
+2026-06-24 15:26:07,200 - INFO - Dados salvos em JSON: c:\Users\Fabio\Git\drogacentro\output\Scrape_Drogal_2026-06-24.json
+2026-06-24 15:26:07,239 - INFO - Dados salvos em CSV: c:\Users\Fabio\Git\drogacentro\output\Scrape_Drogal_2026-06-24.csv.
+2026-06-24 15:26:07,651 - INFO - Dados salvos em Excel: c:\Users\Fabio\Git\drogacentro\output\Scrape_Drogal_2026-06-24.xlsx.
+2026-06-24 15:26:07,651 - INFO - --- Drogal Finish ---
+2026-06-24 15:26:07,652 - INFO - Tempo total: 75.50 segundos
+2026-06-24 15:26:07,652 - INFO - Total de produtos com sucesso: 493
+2026-06-24 15:26:07,652 - INFO - Total de produtos sem EAN: 5
+2026-06-24 15:26:07,652 - INFO - Total de produtos com falha: 2
